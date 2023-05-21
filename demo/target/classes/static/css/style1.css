@@ -1,0 +1,535 @@
+@font-face {
+ src:url(../Fonts/Lobster-Regular.ttf);
+ font-family:Lobster;
+}
+@font-face {
+ src:url(../Fonts/Inter-VariableFont_slnt,wght.ttf);
+ font-family:Inter;
+}
+@font-face {
+ src:url(../Fonts/Jost-VariableFont_wght.ttf);
+ font-family:Jost;
+}
+body { margin:0;}
+.header
+{
+  position: absolute;
+  width: 1835px;
+  height: 114px;
+  left: 0px;
+  top: 0px;
+
+  background: #1CDBF5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 40px 0px;
+}
+.IMG LOGO
+{
+  position: absolute;
+  width: 638px;
+  height: 114px;
+  left: 0px;
+  top: 0px;
+}
+.logo
+{
+  position: absolute;
+  width: 638px;
+  height: 114px;
+  left:0px;
+  top: 0px;
+  background: #08F0FF;
+}
+
+.log3
+{
+  position: absolute;
+  width: 340px;
+  height: 103px;
+  left: 149px;
+  top: 6px;
+}
+.butt1
+{
+  position: absolute;
+  width: 330px;
+  height: 69px;
+  left: 655px;
+  top: 22px;
+
+  background: #FFCE1F;
+  border-radius: 20px 0px;
+}
+.butt1:hover
+{
+    background: #B487FF;
+}
+.a1
+{
+
+position: absolute;
+width: 120px;
+height: 44px;
+left: 100px;
+top: 12px;
+text-decoration: none;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 380;
+font-size: 36px;
+line-height: 44px;
+/* identical to box height */
+
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #323232;
+}
+.a1:hover
+{
+    color:white;
+}
+.butt2
+{
+  position: absolute;
+  width: 330px;
+  height: 69px;
+  left: 1070px;
+  top: 22px;
+
+  background: #FFCE1F;
+  border-radius: 20px 0px;
+}
+.butt2:hover
+{
+    background: #B487FF;
+}
+.a2
+{
+  position: absolute;
+  width: 112px;
+  height: 44px;
+  left: 110px;
+  top: 12px;
+  text-decoration: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 380;
+  font-size: 36px;
+  line-height: 44px;
+
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #323232;
+}
+.a2:hover
+{
+    color:white;
+}
+.butt3
+{
+  position: absolute;
+  width: 330px;
+  height: 69px;
+  left: 1483px;
+  top: 22px;
+
+  background: #FFCE1F;
+  border-radius: 20px 0px;
+}
+.butt3:hover
+{
+    background: #B487FF;
+}
+.a3
+{
+  position: absolute;
+  width: 86px;
+  height: 44px;
+  left: 133px;
+  top: 12px;
+  text-decoration: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 380;
+  font-size: 36px;
+  line-height: 44px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #323232;
+}
+.a3:hover
+{
+    color:white;
+}
+.img3
+{
+  position: absolute;
+  width: 77px;
+  height: 77px;
+  left: 61px;
+  top: 18px;
+
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+}
+.form
+{
+    position: absolute;
+    width: 1544px;
+    height: 616px;
+    left: 188px;
+    top: 232px;
+    background: #6CCDF7;
+    border-radius: 0px 40px;
+}
+.flex
+{
+  display: flex;
+  justify-content:flex-end;
+  position: absolute;
+  width: 1544px;
+  height: 102px;
+  left: 0px;
+  top: 0px;
+  background: #A0F9FF;
+  border-radius: 0px 40px;
+}
+.login
+{
+    position: absolute;
+    width: 772px;
+    height: 102px;
+    left: 0px;
+    top: 0px;
+    border-radius: 0px 40px;
+}
+.login:hover
+{
+    background:#08F0FF;
+}
+.registration
+{
+    position: absolute;
+    width: 772px;
+    height: 102px;
+    left: 772px;
+    top: 0px;
+    border-radius: 0px 40px;
+}
+.registration:hover
+{
+    background:#08F0FF;
+}
+.p1
+{
+    position: absolute;
+    width: 94px;
+    height: 60px;
+    left: 339px;
+    top: 18px;
+    text-decoration:none;
+    font-family: 'Lobster';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 60px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #004E58;
+}
+.p2
+{
+    position: absolute;
+    width: 264px;
+    height: 60px;
+    left: 269px;
+    top: 18px;
+    text-decoration:none;
+    font-family: 'Lobster';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 60px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #004E58;
+}
+.login2
+{
+    display: flex;
+    justify-content:flex-end;
+    position: absolute;
+    width: 695px;
+    height: 70px;
+    left: 449px;
+    top: 172px;
+}
+.login2-text
+{
+    position: absolute;
+    width: 374px;
+    height: 70px;
+    left: 0px;
+    top: 0px;
+    background: #FFCE1F;
+    border-radius: 0px 40px;
+}
+.login2-input
+{
+    position: absolute;
+    width: 378px;
+    height: 70px;
+    left: 322px;
+    top: 0px;
+
+    background: #FFF-FFF;
+    border-radius: 0px 40px;
+    border:0px;
+    font-size:28px;
+}
+.log-text
+{
+    position: absolute;
+    width: 107px;
+    height: 44px;
+    left: 106px;
+    top: 13px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 44px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+
+}
+.password
+{
+   position: absolute;
+   width: 695px;
+   height: 70px;
+   left: 449px;
+   top: 325px;
+}
+.password-frame
+{
+    position: absolute;
+    width: 374px;
+    height: 70px;
+    left: 0px;
+    top: 0px;
+
+    background: #FFCE1F;
+    border-radius: 0px 40px;
+}
+.password-text
+{
+    position: absolute;
+    width: 131px;
+    height: 44px;
+    left: 94px;
+    top: 13px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 44px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+}
+.password-input
+{
+    position: absolute;
+    width: 378px;
+    height: 70px;
+    left: 322px;
+    top: 0px;
+
+    background: #FFFFFF;
+    border-radius: 0px 40px;
+    border:0px;
+    font-size:38px;
+}
+.send
+{
+    position: absolute;
+    width: 695px;
+    height: 70px;
+    left: 449px;
+    top: 478px;
+    background: #B487FF;
+    border-radius: 0px 40px;
+}
+.send-text
+{
+    position: absolute;
+    width: 206px;
+    height: 44px;
+    left: 284px;
+    top: 13px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 44px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background: #B487FF;
+    color: #FFFFFF;
+    border: 0px;
+}
+.footer
+{
+  position: absolute;
+  width: 1835px;
+  height: 114px;
+  left: 0px;
+  top: 960px;
+
+  background: #1CDBF5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 40px 0px;
+}
+.log4
+{
+  position: absolute;
+  width: 750px;
+  height: 114px;
+  left: 0px;
+  top: 0px;
+
+  background: #08F0FF;
+  border-radius: 40px 0px 0px 0px;
+}
+.log4P
+{
+  position: absolute;
+  width: 700px;
+  height: 79px;
+  left: 34px;
+  top: -5px;
+
+  font-family: 'Lobster';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+
+  color: #004E58;
+}
+.butt4
+{
+  position: absolute;
+  width: 350px;
+  height: 69px;
+  left: 860px;
+  top: 23px;
+
+  background: #FFCE1F;
+  border-radius: 20px 0px;
+}
+.log5
+{
+  position: absolute;
+  width:200px;
+  height: 114px;
+  left: 1290px;
+  top: 0px;
+
+  background: #08F0FF;
+}
+.log6
+{
+  position: absolute;
+  width: 200px;
+  height: 114px;
+  left: 1510px;
+  top: 0px;
+
+  background: #1CDBF5;
+}
+.log7
+{
+  position: absolute;
+  width: 180px;
+  height: 114px;
+  left: 1655px;
+  top: 0px;
+
+  background: #08F0FF;
+}
+.img3
+{
+  position: absolute;
+  width: 77px;
+  height: 77px;
+  left: 61px;
+  top: 18px;
+
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+}
+.img4
+{
+  position: absolute;
+  width: 77px;
+  height: 77px;
+  left: 30px;
+  top: 17px;
+
+}
+.img5
+{
+  position: absolute;
+  width: 77px;
+  height: 77px;
+  left: 61px;
+  top: 18px;
+
+}
+.a6
+{
+  position: absolute;
+  width: 352px;
+  height: 44px;
+  left: 0px;
+  top: 12px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 44px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #323232;
+
+}
