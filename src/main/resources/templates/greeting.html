@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="ru">
+<head>
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style1.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="IMG LOGO">
+        <div class="logo">
+            <img class="log3"  src="images/logo.png" alt="Логотип">
+            <a class="log3"   href="/"></a>
+        </div>
+      </div>
+      <button class="butt1" type="button" name="Мастера"><a class="a1" href="#">Мастера</a></button>
+      <button class="butt2" type="button" name="Услуги"><a class="a2" href="#">Услуги</a></button>
+      <button class="butt3" type="button" name="Вход"><a class="a3" href="/greeting">Вход</a></button>
+    </div>
+
+    <div class="form">
+      <div class="flex">
+        <div class="login">
+          <p> <a class="p1" href="/greeting">Вход</a></p>
+        </div>
+        <div class="registration">
+          <p> <a class="p2" href="/greeting2">Регистрация</a></p>
+        </div>
+        <form action="#" th:action="@{/direction}" th:object="${registration}" enctype="multipart/form-data"method="post">
+        <div class="login2">
+          <div class="login2-text">
+              <label for="loginPassword" class="log-text">Логин</label>
+              <span th:text="${error}"/>
+          </div>
+          <div>
+            <input id="loginPassword" class="login2-input" th:field="*{login}" type="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}" required>
+          </div>
+        </div>
+          <div class="password">
+            <div class="password-frame">
+              <label for="userPassword" class="password-text">Пароль</label>
+              <span th:text="${errorPassword}"/>
+            </div>
+            <div>
+              <input id="userPassword" class="password-input" th:field="*{password}"type="password" name="password" pattern="[0-9]{8}" required>
+            </div>
+          </div>
+          <div class="send">
+            <input class="send-text" type="submit" name="send" value="Войти">
+          </div>
+        </form>
+    </div>
+  </div>
+  </div>
+  <div class="footer">
+    <div class="log4">
+      <p class="log4P">© 2009-2023 Салон красоты и здоровья «Le Stelle» Все права защищены </p>
+    </div>
+    <div><button class="butt4" type="button" name="Телефон"><a class="a6">+7 (8452) 29-67-28</a></button></div>
+    <div class= "log5">
+      <img class="img3" src="images/image 3.png" alt="Картинка whatsApp">
+    </div>
+    <div class= "log6">
+      <img class="img4" src="images/image 1.png" alt="Картинка Telegram">
+    </div>
+    <div class= "log7">
+      <img class="img5" src="images/image 2.png" alt="Картинка whatsApp">
+    </div>
+  </div>
+</body>
+</html>
