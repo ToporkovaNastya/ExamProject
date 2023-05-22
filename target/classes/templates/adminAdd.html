@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить Мастера</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style5.css">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="IMG LOGO">
+            <div class="logo">
+                <img class="log3"  src="images/logo.png" alt="Логотип">
+                <a class="log3"   href="/index"></a>
+            </div>
+        </div>
+        <button class="butt1" type="button" name="Мастера"><a class="a1" href="#">Мастера</a></button>
+        <button class="butt2" type="button" name="Услуги"><a class="a2" href="#">Услуги</a></button>
+        <button class="butt3" type="button" name="Вход"><a class="a3" href="/greeting">Личный кабинет</a></button>
+    </div>
+
+    <div class="profile">
+        <div>
+            <div class="flex">
+                <div class="imgPr"><img  class="adminJpg" src="images/admin.jpg"> </div>
+                <div>
+                    <div class="fio">
+                        <div class="fio-text" th:text="${admin.surname}"/>
+                        <div class="fio-text1" th:text="${admin.name}"/>
+                        <div class="fio-text2" th:text="${admin.patronymic}"/>
+                    </div>
+                    <div class="dop-inf">
+                        <div class="region">
+                            <div class="region-text" th:text="${admin.region}"/>
+                        </div>
+                        <div class="date">
+                            <div class="date-text" th:text="${admin.date}"/>
+                        </div>
+                        <div class="email">
+                            <div class="email-text" th:text="${admin.email}"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    <div class="func">
+        <div>
+            <div> <button class="f1" type="button" name="Мастер"><a class="fun1" href="/admin">Мастера</a></button></div>
+            <div><button class="f2" type="button" name="Услуги"><a class="fun2" href="/admin">Услуги</a></button></div>
+            <div><button class="f3" type="button" name="Отзывы"><a class="fun3" href="/admin">Отзывы</a></button></div>
+        </div>
+    </div>
+    <div class="add">
+        <div class="redactor-header">
+            <p class="redactor-header-text"> Мастера</p>
+        </div>
+        <div clas="redactor-flex">
+            <div class="redactor-menu">
+                <div> <button class="f4" type="button" name="Мас"><a class="f4-text" href="/admin">Мастера</a></button></div>
+                <div> <button class="f5" type="button" name="Добавить"><a class="f5-text" href="/add">Добавить</a></button></div>
+            </div>
+    </div>
+        <div class="input">
+            <form id="masterForm" action="#" th:action="@{/greeting3}"  th:object="${master}" enctype="multipart/form-data"method="post">
+                <div>
+                    <div class="frame">
+                        <label for="surnameId" class="surname-text">Фамилия</label>
+                    </div>
+                    <div class="surname">
+                        <input id="surnameId" class="input-data" type="text" name="surname" th:field="*{surname}" pattern="^[а-яА-ЯёЁ]+$" required>
+                    </div>
+                    <div class="name">
+                        <label for="nameId" class="name-text">Имя</label>
+                    </div>
+                    <div>
+                        <input id="nameId" class="input-name" type="text" name="name" th:field="*{name}" pattern="^[а-яА-ЯёЁ]+$" required>
+                    </div>
+                    <div class="patronymic">
+                        <label for="patronymicId" class="patronymic-text">Отчество</label>
+                    </div>
+                    <div>
+                        <input id="patronymicId" class="input-patronymic" type="text" name="patronymic" th:field="*{patronymic}" pattern="^[а-яА-ЯёЁ]+$" required>
+                    </div>
+                    <div class="date">
+                        <label for="dateId" class="date-text">Дата рождения</label>
+                    </div>
+                    <div>
+                        <input id="dateId" class="input-dat" type="text" name="date" th:field="*{date}" pattern="^[а-яА-ЯёЁ]+$" required>
+                    </div>
+                    <div class="gender">
+                        <label for="genderId" class="gender-text">Пол</label>
+                    </div>
+                    <div>
+                        <input id="genderId" class="input-gender" type="text" name="gender" th:field="*{gender}" pattern="^[а-яА-ЯёЁ]+$" required>
+                    </div>
+                    <div class="tel">
+                        <label for="telId" class="tel-text">Телефон</label>
+                    </div>
+                    <div>
+                        <input id="telId" class="input-tel" type="text" name="gender" th:field="*{telephone}" pattern="^\+7-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}$" required>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
