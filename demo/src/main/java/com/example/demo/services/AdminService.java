@@ -2,7 +2,11 @@ package com.example.demo.services;
 
 import com.example.demo.configs.SqlServerJdbcConfig;
 import com.example.demo.mapping.AdminMapper;
+import com.example.demo.mapping.MasterMapper;
+import com.example.demo.mapping.UserAccountMapper;
 import com.example.demo.models.Admin;
+import com.example.demo.models.Master;
+import com.example.demo.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -54,4 +58,45 @@ public class AdminService
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
         return jdbc.queryForObject("SELECT [id] FROM [User] WHERE [User].[login_in] = 1 AND [User].[id_role] = 2;",Integer.class);
     }
+    public int addMaster(Master master)
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        return jdbc.update(
+                "INSERT INTO [dbo].[Master]" +
+                        "           ([Фамилия]" +
+                        "           ,[Имя]" +
+                        "           ,[Отчество]" +
+                        "           ,[Дата_рождения]" +
+                        "           ,[Пол]" +
+                        "           ,[Телефон]" +
+                        "           ,[Грейд]" +
+                        "           ,[Стаж]" +
+                        "           ,[Должность]" +
+                        "           ,[Образование]" +
+                        "           ,[Почта])" +
+                        "     VALUES" +
+                        "           ('"+master.getSurname()+"'"+
+                        "           ,'"+master.getName()+"'"+
+                        "           ,'"+master.getPatronymic()+"'"+
+                        "           ,'"+master.getDate()+"'"+
+                        "           ,'"+master.getGender()+"'"+
+                        "           ,'"+master.getTelephone()+"'"+
+                        "           ,'"+master.getGrade()+"'"+
+                        "           ,'"+master.getExperience()+"'"+
+                        "           ,'"+master.getPost()+"'"+
+                        "           ,'"+master.getEducation()+"'"+
+                        "           ,'"+master.getEmail()+"')");
+
+    }
+    public List<Master> getMasters()
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        return jdbc.query("Select * FROM [dbo].[Master]",new MasterMapper());
+    }
+    public void delete(int id)
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        jdbc.execute("DELETE FROM [dbo].[Master] WHERE [Master].[id] = "+id+";");
+    }
+
 }

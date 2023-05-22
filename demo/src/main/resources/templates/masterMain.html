@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Мастера</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style4.css">
+</head>
+<body>
+<div class="redactor-inf">
+    <div> <button  type="button" name="Выход"><a  href="/signOut">Выйти</a></button></div>
+    <div class="card">
+        <div class="card-fl" th:each="master: ${masters}">
+            <div class="master-fio">
+                <div class="master" th:text="${master.surname}"/>
+                <div class="master" th:text="${master.name}"/>
+                <div class="master" th:text="${master.patronymic}"/>
+                <div class="master-gender" th:text="${master.gender}"/>
+            </div>
+            <div class="master-date">
+                <div class="d-flex">
+                    <label class="d-text">Дата рождения: <div class="master-date-text"th:text="${master.date}"/></label>
+                </div>
+            </div>
+            <div class="master-telephone">
+                <div class="d-flex">
+                    <label class="d-text">Телефон:<div class="master-telephone-text" th:text="${master.telephone}"/></label>
+                </div>
+            </div>
+            <div class="master-post">
+                <div class="d-flex">
+                    <label class="d-text">Должность:<div  class="master-post-text" th:text="${master.post}"/></label>
+                </div>
+            </div>
+            <div class="master-post">
+                <div class="d-flex">
+                    <label class="d-text">Грейд:<div class="master-grade-text" th:text="${master.grade}"/></label>
+                </div>
+            </div>
+            <div class="master-education">
+                <div class="d-flex">
+                    <label class="d-text">Образование:<div class="master-education-text" th:text="${master.education}"/></label>
+                </div>
+            </div>
+            <div class="f-flex">
+                <div> <button class="del" type="button" name="Удалить"><a class="del-text" href="/add">Удалить</a></button></div>
+                <div> <button class="upd" type="button" name="Обновить"><a class="upd-text" href="/add">Обновить</a></button></div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -586,6 +586,7 @@ body { margin:0;}
    top: 496px;
    background: #B487FF;
    border-radius: 0px 40px;
+   background-color: rgba(255, 255, 255, 0.75);;
 }
 .send-text
 {
@@ -602,7 +603,8 @@ body { margin:0;}
      display: flex;
      align-items: center;
      text-align: center;
-     background: #B487FF;
+     border: none;
+     background: none;
+     padding: 0px;
      color: #FFFFFF;
-     border: 0px;
 }

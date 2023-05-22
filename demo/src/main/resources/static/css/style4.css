@@ -722,3 +722,237 @@ body { margin:0;}
     text-align: center;
     color: #323232;
   }
+ .card
+ {
+    position: absolute;
+    width: 1086px;
+    height: 412px;
+    left: 61px;
+    top: 64px;
+
+ }
+ .master-fio
+ {
+    width: 1086px;
+    height: 51px;
+    background: #5DB702;
+    display: flex;
+    justify-content:space-between;
+ }
+ .master-gender
+ {
+    width: 219px;
+    height: 48px;
+    font-family: 'Inter';
+    font-size: 40px;
+    color: #FFFFFF;
+    padding-left:90px;
+ }
+.master
+{
+    width: 219px;
+    height: 48px;
+    font-family: 'Inter';
+    font-size: 40px;
+    color: #FFFFFF;
+}
+.master-date
+{
+    width: 1086px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.5);
+}
+.master-date-text
+{
+    width: 205px;
+    height: 48px;
+    font-family: 'Inter';
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    margin-left: 20px;
+}
+.master-telephone
+{
+    width: 1086px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.75);
+}
+.master-telephone-text
+{
+  width: 488px;
+  height: 48px;
+  font-family: 'Inter';
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  margin-left: 20px;
+}
+.master-post
+{
+    width: 1086px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.5);
+}
+.master-post-text
+{
+    width: 366px;
+    height: 48px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-left: 20px;
+}
+.master-grade-text
+{
+    width: 300px;
+    height: 48px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-left: 20px;
+}
+.master-education
+{
+    width: 1086px;
+    height: 56px;
+    left: 0px;
+    top: 224px;
+   background: rgba(255, 255, 255, 0.75);
+}
+.master-education-text
+{
+    width: 113px;
+    height: 48px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-left: 20px;
+}
+.master-experience
+{
+    width: 1086px;
+    height: 56px;
+    left: 0px;
+    top: 224px;
+    background: rgba(255, 255, 255, 0.5);
+}
+.master-experience-text
+{
+    width: 198px;
+    height: 48px;
+    font-family: 'Inter';
+    font-size: 40px;
+    color: #000000;
+    margin-left: 20px;
+}
+.card-fl
+{
+     margin: 35px;
+}
+.d-text
+{
+    width: 904px;
+    height: 48px;
+    font-family: 'Inter';
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+.f-flex
+{
+    display:flex;
+    justify-content:flex-end;
+    width:1070px;
+}
+.del
+{
+    width: 371px;
+    height: 56px;
+    left: 104px;
+    top: 293px;
+    background: rgba(255, 255, 255, 0.75);
+    margin-top:10px;
+    border:0px;
+}
+.del:hover
+{
+    background: #86D933;
+}
+.del-text
+{
+    width: 162px;
+    height: 48px;
+    left: 105px;
+    top: 4px;
+    font-family: 'Inter';
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-left:100px;
+    text-decoration:none;
+}
+.del-text:hover
+{
+    color: white;
+}
+.upd
+{
+    width: 371px;
+    height: 56px;
+    left: 611px;
+    top: 293px;
+    background: rgba(255, 255, 255, 0.75);
+    margin-top:10px;
+     margin-left:300px;
+    border:0px;
+}
+.upd:hover
+{
+    background: #86D933;
+}
+.upd-text
+{
+     width: 162px;
+     height: 48px;
+     left: 105px;
+     top: 4px;
+     font-family: 'Inter';
+     font-size: 40px;
+     line-height: 48px;
+     display: flex;
+     align-items: center;
+     text-align: center;
+     color: #000000;
+     margin-left:100px;
+     text-decoration:none;
+}
+.upd-text:hover
+{
+    color: white;
+}
