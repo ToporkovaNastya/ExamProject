@@ -2,7 +2,9 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Registration;
 import com.example.demo.services.AdminService;
+import com.example.demo.services.MasterService;
 import com.example.demo.services.RegistrationService;
+import com.example.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,6 +22,31 @@ public class DirectionController
     RegistrationService serviceReg;
     @Autowired
     AdminService serviceAdmin;
+    @Autowired
+    UserService user;
+    @Autowired
+    MasterService msser;
+    @GetMapping ("/directionPage")
+    public ModelAndView loginPage(ModelMap model)throws SQLException
+    {
+        String viewName="redirect:/greeting";
+        if(serviceAdmin.signInAdmin()==true)
+        {
+            viewName="redirect:/admin";
+            return new ModelAndView(viewName,model);
+        }
+        if(user.signInUser()==true)
+        {
+            viewName="redirect:/user";
+            return new ModelAndView(viewName,model);
+        }
+        if(msser.signInMaster()==true)
+        {
+            viewName="redirect:/master";
+            return new ModelAndView(viewName,model);
+        }
+        return new ModelAndView(viewName,model);
+    }
 
     @PostMapping("/direction")
     public ModelAndView login(ModelMap model,@ModelAttribute Registration reg)throws SQLException
@@ -31,7 +58,9 @@ public class DirectionController
             if(login!=null && reg.getPassword().equals(login.getPassword())&&login.getId_role()==1)
             {
                 viewName="redirect:/user";
+                user.signIn(login.getLogin());
                 return new ModelAndView(viewName,model);
+
             }
             if(login!=null && reg.getPassword().equals(login.getPassword())&&login.getId_role()==2)
             {
@@ -42,6 +71,7 @@ public class DirectionController
             if(login!=null && reg.getPassword().equals(login.getPassword())&&login.getId_role()==3)
             {
                 viewName="redirect:/master";
+                msser.signIn(login.getLogin());
                 return new ModelAndView(viewName,model);
             }
             if(!reg.getPassword().equals(login.getPassword()))

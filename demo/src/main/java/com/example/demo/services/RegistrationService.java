@@ -2,6 +2,7 @@ package com.example.demo.services;
 import com.example.demo.configs.SqlServerJdbcConfig;
 import com.example.demo.mapping.RegistrationMapper;
 import com.example.demo.models.Registration;
+import com.example.demo.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,12 +20,13 @@ public class RegistrationService {
                 "INSERT INTO [dbo].[User]" +
                         "           ([login]" +
                         "           ,[password]" +
-                        "           ,[id_role])" +
+                        "           ,[id_role]" +
+                        "           ,[login_in])" +
                         "     VALUES" +
                         "           ('"+reg.getLogin()+"'"+
                         "           ,'"+reg.getPassword()+"'"+
-                        "           ,'"+reg.getId_role()+"')");
-
+                        "           ,'"+reg.getId_role()+"'"+
+                        "           ,'"+reg.getLogin_In()+"')");
     }
     public int getCount(String login){
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());

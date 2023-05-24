@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет Мастера</title>
+</head>
+<body>
+<div class="profile">
+    <div>
+        <div class="flex">
+            <div class="imgPr"><img  class="adminJpg" src="images/admin.jpg"> </div>
+            <div>
+                <div class="fio">
+                    <div class="fio-text" th:text="${master.surname}"/>
+                    <div class="fio-text1" th:text="${master.name}"/>
+                    <div class="fio-text2" th:text="${master.patronymic}"/>
+                </div>
+                <div class="dop-inf">
+                    <div class="date">
+                        <div class="date-text" th:text="${master.date}"/>
+                    </div>
+                    <div class="email">
+                        <div class="email-text" th:text="${master.email}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div> <button  type="button" name="Выход"><a  href="/signOutMs">Выйти</a></button></div>
+</body>
+</html>

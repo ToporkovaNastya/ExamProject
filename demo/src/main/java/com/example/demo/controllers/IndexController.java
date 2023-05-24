@@ -21,6 +21,6 @@ public class IndexController
        {
            model.addAttribute("loginIn","false");
        }
-        return "index";
+        return "mainPages/index";
     }
 }

@@ -6,17 +6,26 @@ public class Registration
     private String login;
     private String password;
     private int Id_role;
+    private int login_In;
 
 
     public Registration()
     {
     }
 
-    public Registration(int id, String login, String password, int Id_role) {
-        Id = id;
+    public Registration(int id, String login, String password, int id_role, int login_In) {
+        this.Id = id;
         this.login = login;
         this.password = password;
-        this.Id_role = Id_role;
+        this.Id_role = id_role;
+        this.login_In = login_In;
+    }
+
+    public int getLogin_In() {
+        return login_In;
+    }
+    public void setLogin_In(int login_In) {
+        this.login_In = login_In;
     }
 
     public String getLogin() {
@@ -40,7 +49,7 @@ public class Registration
     }
 
     public void setId(int id) {
-        Id = id;
+        this.Id = id;
     }
 
     public int getId_role() {
@@ -48,7 +57,7 @@ public class Registration
     }
 
     public void setId_role(int id_role) {
-        Id_role = id_role;
+        this.Id_role = id_role;
     }
 
     @Override
@@ -58,6 +67,7 @@ public class Registration
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", Id_role=" + Id_role +
+                ", login_In=" + login_In +
                 '}';
     }
 }

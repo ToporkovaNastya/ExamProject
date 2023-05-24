@@ -2,14 +2,18 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Master;
 import com.example.demo.models.Registration;
-import com.example.demo.models.User;
+import com.example.demo.models.Service;
 import com.example.demo.services.AdminService;
+import com.example.demo.services.RegistrationService;
+import com.example.demo.services.UserService;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
 
 import java.sql.SQLException;
 
@@ -18,6 +22,10 @@ public class AdminController
 {
     @Autowired
     AdminService service;
+    @Autowired
+    UserService user;
+    @Autowired
+    RegistrationService regSer;
     @GetMapping("/admin")
     public String getAdmin(Model model)
     {
@@ -25,14 +33,45 @@ public class AdminController
         model.addAttribute("admin",ad);
         var ms= service.getMasters();
         model.addAttribute("masters",ms);
-        return "admin";
+        if(user.signIn())
+        {
+            model.addAttribute("loginIn","true");
+        }else
+        {
+            model.addAttribute("loginIn","false");
+        }
+        return "administrator/admin";
+    }
+    @GetMapping("/service")
+    public String getService(Model model)
+    {
+        var ad = service.getLoginAdmin();
+        model.addAttribute("admin",ad);
+        var ser= service.getServices();
+        model.addAttribute("services",ser);
+        model.addAttribute("master",new Master());
+        if(user.signIn())
+        {
+            model.addAttribute("loginIn","true");
+        }else
+        {
+            model.addAttribute("loginIn","false");
+        }
+        return "administrator/service";
     }
     @GetMapping("/masters")
     public String getAllMasters(Model model)
     {
         var ms= service.getMasters();
         model.addAttribute("masters",ms);
-        return "masterMain";
+        if(user.signIn())
+        {
+            model.addAttribute("loginIn","true");
+        }else
+        {
+            model.addAttribute("loginIn","false");
+        }
+        return "mainPages/masterMain";
     }
     @GetMapping("/signOut")
     public String signOut()
@@ -46,20 +85,141 @@ public class AdminController
         var ad = service.getLoginAdmin();
         model.addAttribute("admin",ad);
         model.addAttribute("master",new Master());
-        return "adminAdd";
+        if(user.signIn())
+        {
+            model.addAttribute("loginIn","true");
+        }else
+        {
+            model.addAttribute("loginIn","false");
+        }
+        return "administrator/adminAdd";
     }
     @PostMapping("/admin")
     public String addMaster(Model model,@ModelAttribute Master master) throws SQLException
     {
+        service.addMaster(master);
+        Registration registration = new Registration();
+        registration.setLogin(master.getEmail());
+        registration.setPassword(RandomStringUtils.randomNumeric(8));
+        registration.setId_role(3);
+        registration.setLogin_In(0);
+        regSer.addRegistration(registration);
         var ad = service.getLoginAdmin();
         model.addAttribute("admin",ad);
-        service.addMaster(master);
-        return "admin";
+        var ms= service.getMasters();
+        model.addAttribute("masters",ms);
+        if(user.signIn())
+        {
+            model.addAttribute("loginIn","true");
+        }else
+        {
+            model.addAttribute("loginIn","false");
+        }
+        return "administrator/admin";
     }
-    @GetMapping("/admin/delete")
-    public  String delMaster()
+    @GetMapping("/delete")
+    public String getDelete(Model model, int id,String email)
     {
-        service.delete(1);
-        return  "masterMain";
+        service.delete(id);
+        service.deleteUser(email);
+        var ad = service.getLoginAdmin();
+        model.addAttribute("admin",ad);
+        var ms= service.getMasters();
+        model.addAttribute("masters",ms);
+        if(user.signIn())
+        {
+            model.addAttribute("loginIn","true");
+        }else
+        {
+            model.addAttribute("loginIn","false");
+        }
+        return "administrator/admin";
+    }
+    @GetMapping("/update")
+    public String getUpdate(Model model, int id)
+    {
+        var ad = service.getLoginAdmin();
+        model.addAttribute("admin",ad);
+        var  ms = service.getMaster(id);
+        model.addAttribute("master",ms);
+        if(user.signIn())
+        {
+            model.addAttribute("loginIn","true");
+        }else
+        {
+            model.addAttribute("loginIn","false");
+        }
+        return "administrator/adminUpdate";
+    }
+    @PostMapping("/update")
+    public String update(Model model, @ModelAttribute Master master)
+    {
+        var ad = service.getLoginAdmin();
+        model.addAttribute("admin",ad);
+        var  ms = service.getMaster(master.getId());
+        service.update(master);
+        service.updateUser(master.getEmail(),ms.getEmail());
+        if(user.signIn())
+        {
+            model.addAttribute("loginIn","true");
+        }else
+        {
+            model.addAttribute("loginIn","false");
+        }
+        return "redirect:/admin";
+    }
+    @GetMapping("/deleteSer")
+    public String deleteService(Model model, int id)
+    {
+        service.deleteSer(id);
+        var ad = service.getLoginAdmin();
+        model.addAttribute("admin",ad);
+        var ser= service.getServices();
+        model.addAttribute("services",ser);
+        if(user.signIn())
+        {
+            model.addAttribute("loginIn","true");
+        }else
+        {
+            model.addAttribute("loginIn","false");
+        }
+        return "administrator/service";
+    }
+    @GetMapping("/addSer")
+    public String getServiceAdd(Model model)
+    {
+        var ad = service.getLoginAdmin();
+        model.addAttribute("admin",ad);
+        model.addAttribute("service",new Service());
+        var ms= service.getMasters();
+        model.addAttribute("masters",ms);
+        if(user.signIn())
+        {
+            model.addAttribute("loginIn","true");
+        }else
+        {
+            model.addAttribute("loginIn","false");
+        }
+        return "administrator/addService";
+    }
+
+    @PostMapping("/service")
+    public String addSer(Model model,@ModelAttribute Service ser) throws SQLException
+    {
+        service.addService(ser);
+        var ad = service.getLoginAdmin();
+        model.addAttribute("admin",ad);
+        var serv = service.getServices();
+        model.addAttribute("services",serv);
+        var master = service.getMaster(ser.getId_master());
+        model.addAttribute("master",master);
+        if(user.signIn())
+        {
+            model.addAttribute("loginIn","true");
+        }else
+        {
+            model.addAttribute("loginIn","false");
+        }
+        return "redirect:/service";
     }
 }

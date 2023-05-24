@@ -13,6 +13,7 @@ public class MasterMapper implements RowMapper<Master>
     @Override
     public Master mapRow(ResultSet rs, int rowNum) throws SQLException {
         var master = new Master();
+        master.setId(rs.getInt("id"));
         master.setSurname(rs.getString("Фамилия"));
         master.setName(rs.getString("Имя"));
         master.setPatronymic(rs.getString("Отчество"));
@@ -23,6 +24,7 @@ public class MasterMapper implements RowMapper<Master>
         master.setExperience(rs.getString("Стаж"));
         master.setPost(rs.getString("Должность"));
         master.setEducation(rs.getString("Образование"));
+        master.setDesc(rs.getString("Описание"));
         master.setEmail(rs.getString("Почта"));
         return master;
     }

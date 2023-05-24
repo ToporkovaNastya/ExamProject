@@ -16,6 +16,6 @@ public class ErrorController
         {
             model.addAttribute("error","У вас не хватает прав");
         }
-        return "Errors";
+        return "exception/errors";
     }
 }

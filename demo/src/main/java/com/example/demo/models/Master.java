@@ -2,7 +2,7 @@ package com.example.demo.models;
 
 public class Master
 {
-    private int Id;
+    private int id;
     private String surname;
     private  String name;
     private String patronymic;
@@ -14,15 +14,16 @@ public class Master
     private String post;
     private String education;
     private String email;
+    private String desc;
 
     public Master() {
     }
 
     public Master(int id, String surname, String name, String patronymic, String date,
                   String gender, String telephone, String grade, String experience,
-                  String post, String education, String email)
+                  String post, String education, String email, String desc)
     {
-        Id = id;
+        this.id = id;
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
@@ -34,14 +35,15 @@ public class Master
         this.post = post;
         this.education = education;
         this.email = email;
+        this.desc = desc;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getSurname() {
@@ -132,10 +134,18 @@ public class Master
         this.email = email;
     }
 
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
     @Override
     public String toString() {
         return "Master{" +
-                "Id=" + Id +
+                "id=" + id +
                 ", surname='" + surname + '\'' +
                 ", name='" + name + '\'' +
                 ", patronymic='" + patronymic + '\'' +
@@ -147,6 +157,7 @@ public class Master
                 ", post='" + post + '\'' +
                 ", education='" + education + '\'' +
                 ", email='" + email + '\'' +
+                ", desc='" + desc + '\'' +
                 '}';
     }
 }

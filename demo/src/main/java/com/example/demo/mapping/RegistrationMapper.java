@@ -15,6 +15,7 @@ public class RegistrationMapper implements RowMapper<Registration>
         reg.setLogin(rs.getString("login"));
         reg.setPassword(rs.getString("password"));
         reg.setId_role(rs.getInt("id_role"));
+        reg.setLogin_In(rs.getInt("login_in"));
         return reg;
     }
 }

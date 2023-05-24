@@ -1,26 +1,26 @@
 package com.example.demo.models;
 
-public class Service
+public class Record
 {
     private int Id;
     private String name;
     private String program;
     private String level;
     private int Id_master;
-    private String description;
-    private int price;
+    private String date;
+    private int hallNumber;
 
-    public Service() {
+    public Record() {
     }
 
-    public Service(int id, String name, String program, String level, String description, int price, int id_master) {
+    public Record(int id, String name, String program, String level, int id_master, String date, int hallNumber) {
         Id = id;
         this.name = name;
         this.program = program;
         this.level = level;
-        this.description = description;
-        this.price = price;
         Id_master = id_master;
+        this.date = date;
+        this.hallNumber = hallNumber;
     }
 
     public int getId() {
@@ -28,7 +28,7 @@ public class Service
     }
 
     public void setId(int id) {
-        Id = id;
+        this.Id = id;
     }
 
     public String getName() {
@@ -55,40 +55,40 @@ public class Service
         this.level = level;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
     public int getId_master() {
         return Id_master;
     }
 
     public void setId_master(int id_master) {
-        Id_master = id_master;
+        this.Id_master = id_master;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getHallNumber() {
+        return hallNumber;
+    }
+
+    public void setHallNumber(int hallNumber) {
+        this.hallNumber = hallNumber;
     }
 
     @Override
     public String toString() {
-        return "Service{" +
+        return "Record{" +
                 "Id=" + Id +
                 ", name='" + name + '\'' +
                 ", program='" + program + '\'' +
                 ", level='" + level + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", Id_master=" + Id_master +
+                ", Id_master='" + Id_master + '\'' +
+                ", date='" + date + '\'' +
+                ", hallNumber=" + hallNumber +
                 '}';
     }
 }
