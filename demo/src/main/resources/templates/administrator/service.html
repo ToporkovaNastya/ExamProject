@@ -71,6 +71,9 @@
       <div class="redactor-inf">
         <div class="card">
           <div class="card-fl" th:each="service: ${services}">
+            <div hidden>
+              <div th:text="${service.id}"/>
+            </div>
             <div class="service-fio">
               <div class="service" th:text="${service.name}"/>
             </div>
@@ -86,7 +89,7 @@
             </div>
             <div class="master-post1">
               <div class="d-flex">
-                <label class="d-text">Мастер:<div  class="master-post-text" th:text="${master.surname} + ' ' + ${master.name} + ' ' + ${master.patronymic}"/></label>
+                <label class="d-text">Мастер:<div class="master-post-text" th:text="${master.surname} + ' ' + ${master.name} + ' ' + ${master.patronymic}"/></label>
               </div>
             </div>
             <div class="master-post">

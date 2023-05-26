@@ -98,6 +98,28 @@ body { margin:0;}
 {
     background: #B487FF;
 }
+.a4
+{
+      position: absolute;
+      /* width: 212px; */
+      /* height: 64px; */
+      left: 40px;
+      top: 25px;
+      text-decoration: none;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 380;
+      font-size: 36px;
+      line-height: 44px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #323232;
+}
+.a4:hover
+{
+    color:white;
+}
 .a2
 {
       position: absolute;
@@ -164,7 +186,7 @@ body { margin:0;}
 .profile
 {
     position: absolute;
-    width: 900px;
+    width: 1000px;
     height: 273px;
     left: 447px;
     top: 205px;
@@ -181,7 +203,7 @@ body { margin:0;}
 .fio
 {
     position: absolute;
-    width: 720px;
+    width: 800px;
     height: 61px;
     left: -250px;
     top: 0px;
@@ -189,7 +211,6 @@ body { margin:0;}
     display: flex;
     justify-content:space-between;
     margin-left:500px;
-
 }
 .fio-text
 {
@@ -256,7 +277,7 @@ body { margin:0;}
 .dop-inf
 {
     position: absolute;
-    width: 720px;
+    width: 800px;
     height: 159px;
     left: 250px;
     top: 61px;
@@ -265,11 +286,10 @@ body { margin:0;}
 .region
 {
     position: absolute;
-    width: 729px;
+    width: 800px;
     height: 53px;
     left: 0px;
     top: 0px;
-
     background: rgba(255, 255, 255, 0.32);
 }
 .region-text
@@ -297,11 +317,10 @@ body { margin:0;}
 .email
 {
     position: absolute;
-    width: 729px;
+    width: 800px;
     height: 53px;
     left: 0px;
     top: 106px;
-
     background: rgba(255, 255, 255, 0.32);
 }
 .email-text
@@ -668,7 +687,7 @@ body { margin:0;}
        position: absolute;
        width: 302px;
        height: 77px;
-       left: 48px;
+       left: 10px;
        top: 35px;
        font-family: 'Inter';
        font-style: normal;
@@ -701,11 +720,10 @@ body { margin:0;}
   .date-inf
   {
       position: absolute;
-      width: 729px;
+      width: 800px;
       height: 53px;
       left: px;
       top: 53px;
-
       background: rgba(255, 255, 255, 0.61);
   }
   .date-inf-text
@@ -924,10 +942,10 @@ body { margin:0;}
             width: 600px;
             height: 100px;
             left: 1010px;
-            top: 1000px;
+            top: 800px;
             font-size: 36px;
             background: #FFFFFF;
-             font-size:35px;
+            font-size:35px;
       }
         .gender
         {
@@ -935,7 +953,7 @@ body { margin:0;}
                 width: 430px;
                 height: 100px;
                 left: 691px;
-                top: 1000px;
+                top: 800px;
                 background: #7232C6;
         }
         .tel-text
@@ -943,22 +961,20 @@ body { margin:0;}
                   position: absolute;
                   width: 302px;
                   height: 44px;
-                  left: 52px;
+                  /* left: 109px; */
                   top: 27px;
-
                   font-family: 'Inter';
                   font-style: normal;
                   font-weight: 400;
                   font-size: 36px;
                   line-height: 44px;
                   /* identical to box height */
-
                   display: flex;
-                  align-items: center;
+                  align-items: flex-end;
                   text-align: center;
-
                   color: #FFFFFF;
-
+                  align-content: stretch;
+                  justify-content: center;
                 }
               .input-tel
               {
@@ -966,10 +982,10 @@ body { margin:0;}
                     width: 600px;
                     height: 100px;
                     left: 1010px;
-                    top: 1200px;
+                    top: 1000px;
                     font-size: 36px;
                     background: #FFFFFF;
-                     font-size:35px;
+                    font-size:35px;
               }
                 .tel
                 {
@@ -977,7 +993,7 @@ body { margin:0;}
                         width: 430px;
                         height: 100px;
                         left: 691px;
-                        top: 1200px;
+                        top: 1000px;
                         background: #7232C6;
                 }
 .poster
@@ -1023,15 +1039,15 @@ body { margin:0;}
     width: 390px;
     height: 86px;
     left: 1000px;
-    top: 1550px;
+    top: 1650px;
     background: rgba(255, 255, 255, 0.75);
 }
 .send-text
 {
    position: absolute;
-   width: 200px;
+   width: 250px;
    height: 48px;
-   left: 99px;
+   left: 69px;
    top: 19px;
    font-family: 'Inter';
    font-style: normal;
@@ -1080,3 +1096,44 @@ body { margin:0;}
   {
      color: #FFFFFF;
   }
+   .input-tel2
+                {
+                      position: absolute;
+                      width: 350px;
+                      height: 100px;
+                      left: 1200px;
+                      top: 1200px;
+                      font-size: 36px;
+                      background: #af71ff;
+                      font-size:35px;
+                      border-radius: 0px;
+                }
+.tel2
+  {
+  position: absolute;
+  width: 350px;
+  height: 100px;
+  left: 691px;
+  top: 1200px;
+  background: #7232C6;
+ }
+  .input-tel3
+               {
+                     position: absolute;
+                     width: 600px;
+                     height: 100px;
+                     left: 1010px;
+                     top: 1400px;
+                     font-size: 36px;
+                     background: #FFFFFF;
+                     font-size:35px;
+               }
+ .tel3
+ {
+ position: absolute;
+ width: 430px;
+ height: 100px;
+ left: 691px;
+ top: 1400px;
+ background: #7232C6;
+ }

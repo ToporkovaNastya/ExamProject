@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Записаться</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style10.css">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="IMG LOGO">
+      <div class="logo">
+        <img class="log3"  src="images/logo.png" alt="Логотип">
+        <a class="log3"   href="/index"></a>
+      </div>
+    </div>
+    <button class="butt1" type="button" name="Мастера"><a class="a1" href="#">Мастера</a></button>
+    <button class="butt2" type="button" name="Услуги"><a class="a2" href="#">Услуги</a></button>
+    <div th:switch="${loginIn}">
+      <button id="1" th:case="'true'"class="butt3" type="button" name="Вход"><a  class="a3" href="/directionPage">Личный кабинет</a></button>
+      <button id="2" th:case="'false'"class="butt3" type="button" name="Вход"><a class="a3" href="/greeting">Вход</a></button>
+    </div>
+  </div>
+
+  <div class="profile">
+    <div>
+      <div class="flex">
+        <div class="imgPr"><img  class="adminJpg" src="images/admin.jpg"> </div>
+        <div>
+          <div class="fio">
+            <div class="fio-text" th:text="${user.surname}"/>
+            <div class="fio-text1" th:text="${user.name}"/>
+            <div class="fio-text2" th:text="${user.patronymic}"/>
+          </div>
+          <div class="dop-inf">
+            <div class="region">
+              <div class="region-text" th:text="${user.telephone}"/>
+            </div>
+            <div class="date-inf">
+              <div class="date-inf-text" th:text="${user.date}"/>
+            </div>
+            <div class="email">
+              <div class="email-text" th:text="${user.email}"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="func">
+    <div>
+      <div> <button class="f1" type="button" name="Мастер"><a class="fun1" href="/admin">История</a></button></div>
+      <div><button class="f2" type="button" name="Услуги"><a class="fun2" href="/user">Записи</a></button></div>
+      <div><button class="f3" type="button" name="Отзывы"><a class="fun3" href="/admin">Отзывы</a></button></div>
+    </div>
+  </div>
+  <div> <button  class="signOut" type="button" name="Выход"><a class="signOut-text" href="/signOut">Выйти</a></button></div>
+  <div class="add">
+    <div class="redactor-header">
+      <p class="redactor-header-text"> Услуги </p>
+    </div>
+    <div clas="redactor-flex">
+      <div class="redactor-menu">
+        <div> <button class="f4" type="button" name="Мас"><a class="f4-text" href="/user">Записи</a></button></div>
+        <div> <button class="f5" type="button" name="Добавить"><a class="f5-text" href="/appointment">Записаться</a></button></div>
+      </div>
+    </div>
+
+    <div class="input">
+      <form id="masterForm" action="#" th:action="@{/}"  th:object="${appointment}" enctype="multipart/form-data"method="post">
+        <div>
+          <div class="frame">
+            <label for="nameId" class="surname-text">Название</label>
+          </div>
+          <div class="surname">
+            <input id="nameId" class="input-data" type="text" name="name" th:field="*{id_service}" pattern="^[а-яА-ЯёЁ]+$" required>
+          </div>
+          <div class="name">
+            <label for="prId" class="name-text">Программа</label>
+          </div>
+          <div>
+            <input id="prId" class="input-name2" type="text" name="pr" th:field="*{id_service}" pattern="^[а-яА-ЯёЁ]+$" required>
+          </div>
+          <div class="patronymic">
+            <label for="patronymicId" class="patronymic-text">Уровень сложности</label>
+          </div>
+          <div>
+            <input id="patronymicId" class="input-patronymic" type="text" name="patronymic" th:field="*{id_service}" pattern="^[а-яА-ЯёЁ]+$" required>
+          </div>
+          <div class="gender">
+            <label for="genderId" class="gender-text">Мастер</label>
+          </div>
+          <div>
+            <input id="genderId" class="input-gender" type="text" name="gender" th:field="*{id_master}"  required>
+          </div>
+          <div class="tel">
+            <label for="telId" class="tel-text">Дата</label>
+          </div>
+          <div>
+            <input id="telId" class="input-tel" type="date" name="gender" th:field="*{date}"  required>
+          </div>
+          <div class="tel2">
+          <label for="tel2Id" class="tel-text">Время</label>
+        </div>
+        <div>
+          <button id="tel2Id" class="input-tel2"  th:field="*{id_time}"  type="button" name="gender"><a class="a4" href="/time">Выбрать время</a></button>
+        </div>
+          <div class="tel3">
+            <label for="tel3Id" class="tel-text">Номер зала</label>
+          </div>
+          <div>
+            <input id="tel3Id" class="input-tel3" type="text" name="gender" th:field="*{hallNumber}"  required>
+          </div>
+          <div class="send">
+            <input class="send-text" type="submit" name="send" value="Записаться">
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+  <div class="footer">
+    <div class="log4">
+      <p class="log4P">© 2009-2023 Салон красоты и здоровья «Le Stelle» Все права защищены </p>
+    </div>
+    <div><button class="butt4" type="button" name="Телефон"><a class="a6">+7 (8452) 29-67-28</a></button></div>
+    <div class= "log5">
+      <img class="img3" src="images/image 3.png" alt="Картинка whatsApp">
+    </div>
+    <div class= "log6">
+      <img class="img4" src="images/image 1.png" alt="Картинка Telegram">
+    </div>
+    <div class= "log7">
+      <img class="img5" src="images/image 2.png" alt="Картинка whatsApp">
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>

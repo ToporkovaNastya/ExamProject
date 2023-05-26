@@ -3,9 +3,27 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Личный кабинет Мастера</title>
+        <title>Master</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style9.css">
 </head>
 <body>
+<div class="container">
+    <div class="header">
+        <div class="IMG LOGO">
+            <div class="logo">
+                <img class="log3"  src="images/logo.png" alt="Логотип">
+                <a class="log3"   href="/"></a>
+            </div>
+        </div>
+        <button class="butt1" type="button" name="Мастера"><a class="a1" href="#">Мастера</a></button>
+        <button class="butt2" type="button" name="Услуги"><a class="a2" href="#">Услуги</a></button>
+        <div th:switch="${loginIn}">
+            <button id="1" th:case="'true'"class="butt3" type="button" name="Вход"><a  class="a3" href="/directionPage">Личный кабинет</a></button>
+            <button id="2" th:case="'false'"class="butt3" type="button" name="Вход"><a class="a3" href="/greeting">Вход</a></button>
+        </div>
+    </div>
 <div class="profile">
     <div>
         <div class="flex">
@@ -17,6 +35,9 @@
                     <div class="fio-text2" th:text="${master.patronymic}"/>
                 </div>
                 <div class="dop-inf">
+                    <div class="region">
+                        <div class="region-text" th:text="${master.telephone}"/>
+                    </div>
                     <div class="date">
                         <div class="date-text" th:text="${master.date}"/>
                     </div>
@@ -28,6 +49,74 @@
         </div>
     </div>
 </div>
-<div> <button  type="button" name="Выход"><a  href="/signOutMs">Выйти</a></button></div>
+    <div class="func">
+        <div>
+            <div> <button class="f1" type="button" name="История"><a class="fun1" href="/admin">История</a></button></div>
+            <div><button class="f2" type="button" name="Записи"><a class="fun2" href="/service">Записи</a></button></div>
+            <div><button class="f3" type="button" name="Услуги"><a class="fun3" href="/admin">Отзывы</a></button></div>
+            <div><button class="f4" type="button" name="Отзывы"><a class="fun4" href="/master">Услуги</a></button></div>
+        </div>
+    </div>
+    <div> <button  class="signOut" type="button" name="Выход"><a class="signOut-text" href="/signOutMs">Выйти</a></button></div>
+
+
+    <div clas="redactor-flex">
+        <div class="redactor-menu">
+            <div> <button class="f6" type="button" name="Мас"><a class="f6-text" href="/master">Мои Услуги</a></button></div>
+        </div>
+    <div class="redactor-inf">
+        <div class="redactor-header">
+            <p class="redactor-header-text">Услуги</p>
+        </div>
+        <div class="card">
+            <div class="card-fl" th:each="service: ${services}">
+                <div class="service-fio">
+                    <div class="d-text" th:text="${service.name}"/>
+                </div>
+                <div class="master-date">
+                    <div class="d-flex">
+                        <label class="d-text">Программа: <div class="master-date-text"th:text="${service.program}"/></label>
+                    </div>
+                </div>
+                <div class="master-telephone">
+                    <div class="d-flex">
+                        <label class="d-text">Уровень сложности:<div class="master-telephone-text" th:text="${service.level}"/></label>
+                    </div>
+                </div>
+                <div class="master-post">
+                    <div class="d-flex">
+                        <label class="d-text">Мастер:<div  class="master-post-text" th:text="${service.id_master}"/></label>
+                    </div>
+                </div>
+                <div class="master-telephone">
+                    <div class="d-flex">
+                        <label class="d-text">Цена:<div  class="master-post-text" th:text="${service.price}"/></label>
+                    </div>
+                </div>
+                <div class="f-flex">
+                    <div> <button class="del" type="button" name="Часы работы"><a class="del-text" th:href="|/masterTime?id=${service.id}|">Часы работы</a></button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="footer">
+    <div class="log4">
+        <p class="log4P">© 2009-2023 Салон красоты и здоровья «Le Stelle» Все права защищены </p>
+    </div>
+    <div><button class="butt4" type="button" name="Телефон"><a class="a6">+7 (8452) 29-67-28</a></button></div>
+    <div class= "log5">
+        <img class="img3" src="images/image 3.png" alt="Картинка whatsApp">
+    </div>
+    <div class= "log6">
+        <img class="img4" src="images/image 1.png" alt="Картинка Telegram">
+    </div>
+    <div class= "log7">
+        <img class="img5" src="images/image 2.png" alt="Картинка whatsApp">
+    </div>
+</div>
+</div>
 </body>
 </html>

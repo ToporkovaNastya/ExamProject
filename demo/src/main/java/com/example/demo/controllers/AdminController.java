@@ -43,12 +43,13 @@ public class AdminController
         return "administrator/admin";
     }
     @GetMapping("/service")
-    public String getService(Model model)
+    public String getService(Model model,@ModelAttribute Service sr)
     {
         var ad = service.getLoginAdmin();
         model.addAttribute("admin",ad);
         var ser= service.getServices();
         model.addAttribute("services",ser);
+        var ms= service.getMasters();
         model.addAttribute("master",new Master());
         if(user.signIn())
         {
@@ -120,8 +121,11 @@ public class AdminController
     @GetMapping("/delete")
     public String getDelete(Model model, int id,String email)
     {
-        service.delete(id);
         service.deleteUser(email);
+        service.deleteAppointment(id);
+        service.deleteTime(id);
+        service.deletemasterSer(id);
+        service.delete(id);
         var ad = service.getLoginAdmin();
         model.addAttribute("admin",ad);
         var ms= service.getMasters();

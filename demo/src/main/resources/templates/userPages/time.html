@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Выбрать время</title>
+</head>
+<body>
+<!---
+<div th:each="hour: ${hours}">
+    <label th:for="${hour.id}" th:text="${hour.value}"></label>
+    <input type="radio" th:id="${hour.id}" name="hour" th:value="${hour.id}" disabled/>
+</div>
+<div th:each="dHour: ${dHours}">
+    <label th:text="${dHour}"></label>
+</div>-->
+<div th:each="work: ${works}">
+        <div th:switch="${work.disabled}">
+            <label th:for="|work.id-${work.id_hour}|" th:text="${work.value}"/>
+            <input th:case="true" type="radio" style="display: none;" th:id="|work.id-${work.id_hour}|" name="|work.id-${work.id_hour}|" disabled th:value="${work.value}" />
+            <input th:case="false" type="radio" th:id="|work.id-${work.id_hour}|" name="|work.id-${work.id_hour}|"  th:value="${work.value}" />
+        </div>
+</div>
+</body>
+</html>

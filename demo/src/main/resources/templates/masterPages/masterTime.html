@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить время</title>
+    <link rel="stylesheet" href="css/style11.css">
+</head>
+<body>
+    <div>
+        <form id="masterForm" action="#" th:action="@{/masterTime}"  th:object="${masterTime}" enctype="multipart/form-data"method="post">
+            <div>
+                <div hidden class="surname">
+                    <input id="surnameId" class="input-data" type="text" name="surname" th:field="*{master_id}">
+                </div>
+                <div>
+                    <input hidden id="dateId" class="input-dat" type="text" name="date" th:field="*{service_id}">
+                </div>
+
+                <div class="gender">
+                    <label for="genderId" class="gender-text">Дата</label>
+                </div>
+                <div>
+                    <input id="genderId" class="input-gender" type="date" name="gender" th:field="*{date}"  required>
+                </div>
+
+                <div class="tel">
+                    <label for="telId" class="tel-text">Добавить время</label>
+                </div>
+                <div>
+                    <input id="telId" class="input-tel" type="text" name="gender" th:field="*{value}"  required>
+                </div>
+
+                <div class="send">
+                    <input class="send-text" type="submit" name="send" value="Добавить">
+                </div>
+
+            </div>
+        </form>
+
+        <div th:each="hour: ${hours}">
+            <div class="flex">
+                <label th:for="${hour.id}" th:text="${hour.date} + ' ' + ${hour.value}"></label>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

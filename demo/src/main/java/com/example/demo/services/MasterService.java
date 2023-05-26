@@ -3,11 +3,15 @@ package com.example.demo.services;
 import com.example.demo.configs.SqlServerJdbcConfig;
 import com.example.demo.mapping.AdminMapper;
 import com.example.demo.mapping.MasterMapper;
+import com.example.demo.mapping.ServiceMapper;
 import com.example.demo.models.Admin;
 import com.example.demo.models.Master;
+import com.example.demo.models.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class MasterService
@@ -25,6 +29,12 @@ public class MasterService
         String email = signInEmail();
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
         return jdbc.queryForObject("SELECT * FROM [Master] WHERE [Master].[Почта] =  '"+email+"'",  new MasterMapper());
+    }
+    public boolean signIn ()
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        var f = jdbc.queryForObject("SELECT COUNT ([login_in]) FROM [User] WHERE [User].[login_in] =3;",Integer.class);
+        return f>0;
     }
     public void signIn (String email)
     {
@@ -52,5 +62,10 @@ public class MasterService
     {
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
         return jdbc.queryForObject("SELECT [id] FROM [User] WHERE [User].[login_in] = 1 AND [User].[id_role] = 3;",Integer.class);
+    }
+    public List<Service> getServices(int id_master)
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        return jdbc.query("Select * FROM [dbo].[Service] WHERE [Service].[id_мастера] = '"+id_master+"';",new ServiceMapper());
     }
 }

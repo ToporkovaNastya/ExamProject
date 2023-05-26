@@ -96,6 +96,16 @@ public class AdminService
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
         return jdbc.query("Select * FROM [dbo].[Master]",new MasterMapper());
     }
+    public  Master master(int id)
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        return jdbc.queryForObject("Select * FROM [dbo].[Master] WHERE [Master].[id] = '"+id+"';",new MasterMapper());
+    }
+    public int service(int id)
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        return jdbc.queryForObject("Select id_мастера FROM [dbo].[Service] WHERE [Service].[id] = '"+id+"';", Integer.class);
+    }
     public List<Service> getServices()
     {
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
@@ -133,6 +143,21 @@ public class AdminService
     {
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
         jdbc.execute("DELETE FROM [dbo].[User] WHERE [User].[login] = '"+email+"';");
+    }
+    public void deleteTime(int id)
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        jdbc.execute("DELETE FROM [dbo].[WorkingTime2] WHERE [WorkingTime2].[id_мастера] = '"+id+"';");
+    }
+    public void deleteAppointment(int id)
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        jdbc.execute("DELETE FROM [dbo].[Appoinment] WHERE [Appoinment].[id_мастера] = '"+id+"';");
+    }
+    public void deletemasterSer(int id)
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        jdbc.execute("DELETE FROM [dbo].[Service] WHERE [Service].[id_мастера] = '"+id+"';");
     }
     public void deleteSer(int id)
     {
