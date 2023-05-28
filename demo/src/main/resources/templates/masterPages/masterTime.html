@@ -38,13 +38,15 @@
             </div>
         </form>
 
-        <div th:each="hour: ${hours}">
-            <div class="flex">
-                <label th:for="${hour.id}" th:text="${hour.date} + ' ' + ${hour.value}"></label>
+        <div th:each="work: ${works}">
+            <div th:switch="${work.disabled}">
+                <label style="background:white;" th:case="true" th:for="|work.id-${work.id_hour}|" th:text="${work.value}">
+                <input  type="radio" style="display: none;" th:id="|work.id-${work.id_hour}|" name="|work.id-${work.id_hour}|" disabled th:value="${work.value}" />  </label>
+                <label style="background:blue;" th:case="false" th:for="|work.id-${work.id_hour}|" th:text="${work.value}">
+                <input  type="radio" style="display: none;"th:id="|work.id-${work.id_hour}|" name="|work.id-${work.id_hour}|"  th:value="${work.value}" /></label>
+
             </div>
-
         </div>
-
     </div>
 </body>
 </html>

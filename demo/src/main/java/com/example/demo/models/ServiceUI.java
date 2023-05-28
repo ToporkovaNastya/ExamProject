@@ -1,27 +1,30 @@
 package com.example.demo.models;
 
-public class Service
+public class ServiceUI
 {
     private int Id;
     private String name;
     private String program;
     private String level;
     private int Id_master;
+    private String surname;
+    private String masterName;
+    private String patronymic;
     private String description;
     private int price;
 
-
-    public Service() {
+    public ServiceUI() {
     }
 
-    public Service(int id, String name, String program, String level, String description, int price, int id_master) {
+    public ServiceUI(int id, String name, String program, String level, int id_master,
+                     String description, int price) {
         Id = id;
         this.name = name;
         this.program = program;
         this.level = level;
+        Id_master = id_master;
         this.description = description;
         this.price = price;
-        Id_master = id_master;
     }
 
     public int getId() {
@@ -56,6 +59,38 @@ public class Service
         this.level = level;
     }
 
+    public int getId_master() {
+        return Id_master;
+    }
+
+    public void setId_master(int id_master) {
+        Id_master = id_master;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getMasterName() {
+        return masterName;
+    }
+
+    public void setMasterName(String masterName) {
+        this.masterName = masterName;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -70,26 +105,5 @@ public class Service
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public int getId_master() {
-        return Id_master;
-    }
-
-    public void setId_master(int id_master) {
-        Id_master = id_master;
-    }
-
-    @Override
-    public String toString() {
-        return "Service{" +
-                "Id=" + Id +
-                ", name='" + name + '\'' +
-                ", program='" + program + '\'' +
-                ", level='" + level + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", Id_master=" + Id_master +
-                '}';
     }
 }

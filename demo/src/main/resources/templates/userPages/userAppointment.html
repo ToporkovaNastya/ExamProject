@@ -71,49 +71,49 @@
     </div>
 
     <div class="input">
-      <form id="masterForm" action="#" th:action="@{/}"  th:object="${appointment}" enctype="multipart/form-data"method="post">
+      <form id="masterForm" action="#" th:action="@{/}"  th:object="${appointmentUI}" enctype="multipart/form-data"method="post">
         <div>
           <div class="frame">
             <label for="nameId" class="surname-text">Название</label>
           </div>
           <div class="surname">
-            <input id="nameId" class="input-data" type="text" name="name" th:field="*{id_service}" pattern="^[а-яА-ЯёЁ]+$" required>
+            <input id="nameId" class="input-data" type="text" name="name" th:field="*{name}" pattern="^[а-яА-ЯёЁ]+$" required>
           </div>
           <div class="name">
             <label for="prId" class="name-text">Программа</label>
           </div>
           <div>
-            <input id="prId" class="input-name2" type="text" name="pr" th:field="*{id_service}" pattern="^[а-яА-ЯёЁ]+$" required>
+            <input id="prId" class="input-name2" type="text" name="program" th:field="*{program}" pattern="^[а-яА-ЯёЁ]+$" required>
           </div>
           <div class="patronymic">
             <label for="patronymicId" class="patronymic-text">Уровень сложности</label>
           </div>
           <div>
-            <input id="patronymicId" class="input-patronymic" type="text" name="patronymic" th:field="*{id_service}" pattern="^[а-яА-ЯёЁ]+$" required>
+            <input id="patronymicId" class="input-patronymic" type="text" name="level" th:field="*{level}" pattern="^[а-яА-ЯёЁ]+$" required>
           </div>
           <div class="gender">
             <label for="genderId" class="gender-text">Мастер</label>
           </div>
           <div>
-            <input id="genderId" class="input-gender" type="text" name="gender" th:field="*{id_master}"  required>
+            <input id="genderId" class="input-gender" type="text" name="masterName" th:field="*{masterName}"  required>
           </div>
           <div class="tel">
             <label for="telId" class="tel-text">Дата</label>
           </div>
           <div>
-            <input id="telId" class="input-tel" type="date" name="gender" th:field="*{date}"  required>
+            <input id="telId" class="input-tel" type="date" name="date" th:field="*{date}"  required>
           </div>
           <div class="tel2">
           <label for="tel2Id" class="tel-text">Время</label>
         </div>
         <div>
-          <button id="tel2Id" class="input-tel2"  th:field="*{id_time}"  type="button" name="gender"><a class="a4" href="/time">Выбрать время</a></button>
+          <button id="tel2Id" class="input-tel2"   type="button" name="gender"><a class="a4" href="/time">Выбрать время</a></button>
         </div>
           <div class="tel3">
             <label for="tel3Id" class="tel-text">Номер зала</label>
           </div>
           <div>
-            <input id="tel3Id" class="input-tel3" type="text" name="gender" th:field="*{hallNumber}"  required>
+            <input id="tel3Id" class="input-tel3" type="text" name="hallNumber" th:field="*{hallNumber}"  required>
           </div>
           <div class="send">
             <input class="send-text" type="submit" name="send" value="Записаться">

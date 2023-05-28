@@ -61,9 +61,24 @@ public class MasterController
         {
             model.addAttribute("loginIn","false");
         }
-
-        var allHours = time.getHours();
-        model.addAttribute("hours",allHours);
+        java.sql.Date sqlDate1 =new java.sql.Date(2023-1900,05-01,01);
+        var allHours = time.getHours(master_id,sqlDate1);
+        var dHours = time.avaliableHours(16,sqlDate1);
+        List<WorkingTimeUI> lst = new ArrayList<>();
+        for(var allhour:allHours)
+        {
+            var work = new WorkingTimeUI(allhour.getId(),allhour.getValue());
+            for(var dHour:dHours)
+            {
+                if(dHour.getId()==allhour.getId())
+                {
+                    work.setDisabled(true);
+                    break;
+                }
+            }
+            lst.add(work);
+        }
+        model.addAttribute("works",lst);
 
 
         return "masterPages/masterTime";

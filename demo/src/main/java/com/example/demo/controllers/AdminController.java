@@ -3,7 +3,9 @@ package com.example.demo.controllers;
 import com.example.demo.models.Master;
 import com.example.demo.models.Registration;
 import com.example.demo.models.Service;
+import com.example.demo.models.ServiceUI;
 import com.example.demo.services.AdminService;
+import com.example.demo.services.MasterService;
 import com.example.demo.services.RegistrationService;
 import com.example.demo.services.UserService;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class AdminController
@@ -24,6 +28,8 @@ public class AdminController
     AdminService service;
     @Autowired
     UserService user;
+    @Autowired
+    MasterService ms;
     @Autowired
     RegistrationService regSer;
     @GetMapping("/admin")
@@ -45,12 +51,21 @@ public class AdminController
     @GetMapping("/service")
     public String getService(Model model,@ModelAttribute Service sr)
     {
+        List<ServiceUI> lst = new ArrayList<>();
         var ad = service.getLoginAdmin();
         model.addAttribute("admin",ad);
         var ser= service.getServices();
-        model.addAttribute("services",ser);
-        var ms= service.getMasters();
-        model.addAttribute("master",new Master());
+        for (var serv:ser)
+        {
+            var ui = new ServiceUI(serv.getId(),serv.getName(),serv.getProgram(),
+                    serv.getLevel(),serv.getId_master(),serv.getDescription(),serv.getPrice());
+            var mui = ms.getFio(serv.getId_master());
+            ui.setSurname(mui.getSurname());
+            ui.setMasterName(mui.getName());
+            ui.setPatronymic(mui.getPatronymic());
+            lst.add(ui);
+        }
+        model.addAttribute("services",lst);
         if(user.signIn())
         {
             model.addAttribute("loginIn","true");

@@ -95,13 +95,17 @@
                         <label for="dateId" class="date-text">Дата рождения</label>
                     </div>
                     <div>
-                        <input id="dateId" class="input-dat" type="text" name="date" th:field="*{date}" required>
+                       <input id="dateId" class="input-dat" type="text" name="date" th:field="*{date}" required>
                     </div>
                     <div class="gender">
                         <label for="genderId" class="gender-text">Пол</label>
                     </div>
                     <div>
-                        <input id="genderId" class="input-gender" type="text" name="gender" th:field="*{gender}" pattern="^[а-яА-ЯёЁ]+$" required>
+                        <!--<input id="genderId" class="input-gender" type="text" name="gender" th:field="*{gender}" pattern="^[а-яА-ЯёЁ]+$" required>-->
+                        <select name="gender" th:field="*{gender}" pattern="^[а-яА-ЯёЁ]+$"  class="input-gender" id="genderId" required>
+                                <option th:value="'Женский'" th:text="Женский"></option>
+                                <option th:value="'Мужской'" th:text="Мужской"></option>
+                        </select>
                     </div>
                     <div class="tel">
                         <label for="telId" class="tel-text">Телефон</label>

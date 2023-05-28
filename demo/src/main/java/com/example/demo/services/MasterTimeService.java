@@ -35,14 +35,14 @@ public class MasterTimeService
                         "           ,'"+masterTime.getDate()+"'"+
                         "           ,'"+masterTime.getValue()+"')");
     }
-    public List<MasterTime> getHours()
+    public List<MasterTime> getHours(int master_id,Date date)
     {
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
-        return jdbc.query("Select * FROM [dbo].[WorkingTime2] ORDER BY id",new MasterTimeMapper());
+        return jdbc.query("Select * FROM [dbo].[WorkingTime2] WHERE id_мастера = "+master_id+" AND Дата = '"+date+"'",new MasterTimeMapper());
     }
     public List<AppointmentId> avaliableHours(int id_master, Date date)
     {
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
-        return jdbc.query("Select id_времени FROM [dbo].[Appoinment] WHERE [Appoinment].[id_мастера] = '"+id_master+"' AND  [Appoinment].[Дата] = '"+date+"';",new AppointmentIdMapper());
+        return jdbc.query("Select id_времени FROM [dbo].[Appoinment] WHERE [Appoinment].[id_мастера] = "+id_master+" AND  [Appoinment].[Дата] = '"+date+"';",new AppointmentIdMapper());
     }
 }

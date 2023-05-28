@@ -1,7 +1,9 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.Appointment;
+import com.example.demo.models.AppointmentUI;
 import com.example.demo.models.WorkingTimeUI;
+import com.example.demo.services.AppointmentService;
 import com.example.demo.services.UserService;
 import com.example.demo.services.WorkingTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ public class UserController
     UserService user;
     @Autowired
     WorkingTimeService time;
+    @Autowired
+    AppointmentService ap;
     /*
     @GetMapping("/user")
     public String user (Model model)
@@ -75,7 +79,8 @@ public class UserController
     {
         var us = user.getLoginUser();
         model.addAttribute("user",us);
-        model.addAttribute("appointment",new Appointment());
+        model.addAttribute("appointmentUI",new AppointmentUI());
+        //ap.getServices();
         if(user.signIn())
         {
             model.addAttribute("loginIn","true");

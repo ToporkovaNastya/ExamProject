@@ -68,4 +68,9 @@ public class MasterService
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
         return jdbc.query("Select * FROM [dbo].[Service] WHERE [Service].[id_мастера] = '"+id_master+"';",new ServiceMapper());
     }
+    public Master getFio(int id_master)
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        return jdbc.queryForObject("Select * FROM [dbo].[Master] WHERE [Master].[id] = "+id_master+";",new MasterMapper());
+    }
 }
