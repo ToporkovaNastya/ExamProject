@@ -16,7 +16,7 @@ public class UserAccountMapper implements RowMapper<User>
         user.setName(rs.getString("Имя"));
         user.setPatronymic(rs.getString("Отчество"));
         user.setGender(rs.getString("Пол"));
-        user.setDate(rs.getString("Дата_рождения"));
+        user.setDate(rs.getDate("Дата_рождения"));
         user.setTelephone(rs.getString("Телефон"));
         user.setEmail(rs.getString("E-mail"));
         return user;

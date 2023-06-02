@@ -14,11 +14,11 @@
         <div class="IMG LOGO">
             <div class="logo">
                 <img class="log3"  src="images/logo.png" alt="Логотип">
-                <a class="log3"   href="/index"></a>
+                <a class="log3"   href="/"></a>
             </div>
         </div>
-        <button class="butt1" type="button" name="Мастера"><a class="a1" href="#">Мастера</a></button>
-        <button class="butt2" type="button" name="Услуги"><a class="a2" href="#">Услуги</a></button>
+        <button class="butt1" type="button" name="Мастера"><a class="a1" href="/masters">Мастера</a></button>
+        <button class="butt2" type="button" name="Услуги"><a class="a2" href="/services">Услуги</a></button>
         <div th:switch="${loginIn}">
             <button id="1" th:case="'true'"class="butt3" type="button" name="Вход"><a  class="a3" href="/directionPage">Личный кабинет</a></button>
             <button id="2" th:case="'false'"class="butt3" type="button" name="Вход"><a class="a3" href="/greeting">Вход</a></button>
@@ -55,7 +55,6 @@
         <div>
             <div> <button class="f1" type="button" name="Мастер"><a class="fun1" href="/admin">Мастера</a></button></div>
             <div><button class="f2" type="button" name="Услуги"><a class="fun2" href="/service">Услуги</a></button></div>
-            <div><button class="f3" type="button" name="Отзывы"><a class="fun3" href="/admin">Отзывы</a></button></div>
         </div>
     </div>
     <div> <button  class="signOut" type="button" name="Выход"><a class="signOut-text" href="/signOut">Выйти</a></button></div>
@@ -83,20 +82,27 @@
                         <label for="prId" class="name-text">Программа</label>
                     </div>
                     <div>
-                        <input id="prId" class="input-name2" type="text" name="pr" th:field="*{program}" pattern="^[а-яА-ЯёЁ]+$" required>
+                        <select name="pr" th:field="*{program}" class="input-name2" id="prId" required>
+                            <option th:value="'Комплексная'" th:text="Комплексная"></option>
+                            <option th:value="'Обычная'" th:text="Обычная"></option>
+                        </select>
                     </div>
                     <div class="patronymic">
                         <label for="patronymicId" class="patronymic-text">Уровень сложности</label>
                     </div>
                     <div>
-                        <input id="patronymicId" class="input-patronymic" type="text" name="patronymic" th:field="*{level}" pattern="^[а-яА-ЯёЁ]+$" required>
+                        <select name="patronymic" th:field="*{level}"  class="input-patronymic" id="patronymicId" required>
+                            <option th:value="'Высокий'" th:text="Высокий"></option>
+                            <option th:value="'Средний'" th:text="Средний"></option>
+                            <option th:value="'Обычный'" th:text="Обычный"></option>
+                        </select>
                     </div>
                     <div class="date">
                         <label for="dateId" class="date-text">Мастер</label>
                     </div>
                     <div>
                         <select id="dateId" th:field="*{Id_master}"  class="input-dat" name="date">
-                            <option  th:each="master: ${masters}" th:value="${master.id}" th:text="${master.surname} + ' ' + ${master.name} + ' ' + ${master.post}" required></option>
+                            <option  th:each="master: ${masters}" th:value="${master.id}" th:text="${master.surname} + ' ' + ${master.name} + ' '+ ${master.patronymic} + ' ' + ${master.post}" required></option>
                         </select>
                     </div>
                     <div class="gender">

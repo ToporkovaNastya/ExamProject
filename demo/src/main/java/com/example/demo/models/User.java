@@ -1,6 +1,6 @@
 package com.example.demo.models;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class User
 {
@@ -9,14 +9,14 @@ public class User
     private  String name;
     private String patronymic;
     private String gender;
-    private String date;
+    private Date date;
     private String telephone;
     private String email;
 
     public User() {
     }
 
-    public User(String surname, String name, String patronymic, String gender, String date, String telephone, String email)
+    public User(String surname, String name, String patronymic, String gender,Date date, String telephone, String email)
     {
         this.surname = surname;
         this.name = name;
@@ -67,11 +67,11 @@ public class User
         this.gender = gender;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

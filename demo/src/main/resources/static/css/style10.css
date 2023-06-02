@@ -104,7 +104,7 @@ body { margin:0;}
       /* width: 212px; */
       /* height: 64px; */
       left: 40px;
-      top: 25px;
+      top: -5px;
       text-decoration: none;
       font-family: 'Inter';
       font-style: normal;
@@ -360,7 +360,7 @@ body { margin:0;}
     position: absolute;
     width: 1247.84px;
     height: 222px;
-    left: 380px;
+    left: 420px;
     top: 590px;
  }
  .f1
@@ -428,23 +428,29 @@ body { margin:0;}
  }
  .f3
  {
+    /* position: absolute; */
+    /* width: 374.42px; */
+    /* height: 222px; */
+    /* left: 800px; */
+    /* top: 0px; */
+    /* background: #FFF0A0; */
     position: absolute;
-    width: 374.42px;
+    width: 430.42px;
     height: 222px;
     left: 800px;
     top: 0px;
-    background: #FFF0A0;
+    background: #FF0CF5;
  }
  .f3:hover
  {
-    background: #FADA31;
+    background: #A3039C;
  }
  .fun3
  {
-    position: absolute;
-    width: 199px;
+   position: absolute;
+    width: 250px;
     height: 77px;
-    left: 60px;
+    left: 30px;
     top: 72px;
     font-family: 'Inter';
     font-style: normal;
@@ -455,7 +461,7 @@ body { margin:0;}
     align-items: center;
     text-align: center;
     color: #141414;
-    text-decoration:none;
+    text-decoration: none;
  }
  .footer
    {
@@ -729,24 +735,20 @@ body { margin:0;}
   .date-inf-text
   {
       position: absolute;
-      width: 178px;
+      width: 378px;
       height: 44px;
       left: 9px;
       top: 4px;
-
       font-family: 'Inter';
       font-style: normal;
       font-weight: 400;
       font-size: 36px;
       line-height: 44px;
       /* identical to box height */
-
       display: flex;
       align-items: center;
       text-align: center;
-
       color: #000000;
-
   }
 .frame
 {

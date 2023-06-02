@@ -17,8 +17,8 @@
                 <a class="log3"   href="/"></a>
             </div>
         </div>
-        <button class="butt1" type="button" name="Мастера"><a class="a1" href="#">Мастера</a></button>
-        <button class="butt2" type="button" name="Услуги"><a class="a2" href="#">Услуги</a></button>
+        <button class="butt1" type="button" name="Мастера"><a class="a1" href="/masters">Мастера</a></button>
+        <button class="butt2" type="button" name="Услуги"><a class="a2" href="/services">Услуги</a></button>
         <div th:switch="${loginIn}">
             <button id="1" th:case="'true'"class="butt3" type="button" name="Вход"><a  class="a3" href="/directionPage">Личный кабинет</a></button>
             <button id="2" th:case="'false'"class="butt3" type="button" name="Вход"><a class="a3" href="/greeting">Вход</a></button>
@@ -51,10 +51,9 @@
 </div>
     <div class="func">
         <div>
-            <div> <button class="f1" type="button" name="История"><a class="fun1" href="/admin">История</a></button></div>
-            <div><button class="f2" type="button" name="Записи"><a class="fun2" href="/service">Записи</a></button></div>
-            <div><button class="f3" type="button" name="Услуги"><a class="fun3" href="/admin">Отзывы</a></button></div>
-            <div><button class="f4" type="button" name="Отзывы"><a class="fun4" href="/master">Услуги</a></button></div>
+            <div> <button class="f1" type="button" name="История"><a class="fun1" href="/masterHistory">История</a></button></div>
+            <div><button class="f2" type="button" name="Записи"><a class="fun2" href="/masterAp">Записи</a></button></div>
+            <div><button class="f4" type="button" name="Услуги"><a class="fun4" href="/master">Услуги</a></button></div>
         </div>
     </div>
     <div> <button  class="signOut" type="button" name="Выход"><a class="signOut-text" href="/signOutMs">Выйти</a></button></div>
@@ -68,8 +67,10 @@
         <div class="redactor-header">
             <p class="redactor-header-text">Услуги</p>
         </div>
+        <span class="span" th:text="${error}"/>
         <div class="card">
             <div class="card-fl" th:each="service: ${services}">
+                <form id="masterForm" action="#" th:action="@{/masterTime}"  th:object="${masterTime}" enctype="multipart/form-data"method="post">
                 <div class="service-fio">
                     <div class="d-text" th:text="${service.name}"/>
                 </div>
@@ -85,7 +86,7 @@
                 </div>
                 <div class="master-post">
                     <div class="d-flex">
-                        <label class="d-text">Мастер:<div  class="master-post-text" th:text="${service.id_master}"/></label>
+                        <label class="d-text">Описание:<div  class="master-post-text" th:text="${service.description}"/></label>
                     </div>
                 </div>
                 <div class="master-telephone">
@@ -93,10 +94,44 @@
                         <label class="d-text">Цена:<div  class="master-post-text" th:text="${service.price}"/></label>
                     </div>
                 </div>
-                <div class="f-flex">
-                    <div> <button class="del" type="button" name="Часы работы"><a class="del-text" th:href="|/masterTime?id=${service.id}|">Часы работы</a></button></div>
-                </div>
+                    <div>
+                        <input hidden id="dateId" class="input-dat" type="text" name="service_id"  th:value="${service.id}">
+                    </div>
+                    <div class="tel-flex">
+                        <div class="gender">
+                            <label for="genderId" class="gender-text">Дата</label>
+                        </div>
+                        <div>
+                            <input id="genderId" class="input-gender" type="date" name="gender" th:field="*{date}"  required>
+                        </div>
+                    </div>
+            <div class="tel-flex">
+                    <div class="tel">
+                        <label for="telId" class="tel-text">Добавить время</label>
+                      </div>
+                     <div>
+                        <input id="telId" class="input-tel" type="text" name="gender" th:field="*{value}"  required>
+                    </div>
+            </div>
+                    <div class="f-flex">
+                        <input class="del" type="submit" name="Добавить время" value="Добавить время">
 
+                    </div>
+                </form>
+                <form id="masterForm2" action="#" th:action="@{/masterTime2}"  th:object="${masterTime}" enctype="multipart/form-data"method="post">
+                    <div class="tel-flex">
+                        <div class="tel2">
+                            <label for="tel2Id" class="tel2-text">Выберите дату</label>
+                        </div>
+                        <div>
+                            <input id="tel2Id" class="input-tel2" type="date" name="date" th:field="*{date}"  required>
+                        </div>
+                    </div>
+                    <div>
+                        <input hidden id="datId" class="input-dat" type="text" name="service_id"  th:value="${service.id}">
+                    </div>
+                <div> <input class="del2" type="submit" name="Посмотреть расписание" value="Посмотреть расписание"></div>
+                </form>
             </div>
         </div>
     </div>

@@ -14,17 +14,17 @@
     <div class="IMG LOGO">
       <div class="logo">
         <img class="log3"   src="images/logo.png" alt="Логотип">
-        <a class="log3"     href="/index"></a>
+        <a class="log3"   href="/"></a>
       </div>
     </div>
-    <button class="butt1" type="button" name="Мастера"><a class="a1" href="#">Мастера</a></button>
-    <button class="butt2" type="button" name="Услуги"><a class="a2" href="#">Услуги</a></button>
+    <button class="butt1" type="button" name="Мастера"><a class="a1" href="/masters">Мастера</a></button>
+    <button class="butt2" type="button" name="Услуги"><a class="a2" href="/services">Услуги</a></button>
     <button class="butt3" type="button" name="Вход"><a class="a3" href="/greeting">Вход</a></button>
   </div>
   <div class="form">
     <div class="flex">
       <div class="login">
-        <p> <a class="p1" href="/">Вход</a></p>
+        <p> <a class="p1" href="/greeting">Вход</a></p>
       </div>
       <div class="registration">
         <p> <a class="p2" href="/greeting2">Регистрация</a></p>
@@ -46,10 +46,9 @@
             <label for="dateId" class="date-text">Дата Рождения</label>
           </div>
           <div>
-            <input id="dateId" class="input" type="text" name="data"  th:field="*{date}" required>
+            <input id="dateId"class="input" type="date" name="data"  th:field="*{date}"  required>
           </div>
         </div>
-
       </div>
       <div class="flex-input">
 
@@ -98,7 +97,10 @@
             <label for="genderId" class="gender-text">Пол</label>
           </div>
           <div>
-            <input id="genderId" class="input" type="text" th:field="*{gender}"required>
+            <select name="gender" th:field="*{gender}" pattern="^[а-яА-ЯёЁ]+$"  class="input" id="genderId" required>
+              <option th:value="'Женский'" th:text="Женский"></option>
+              <option th:value="'Мужской'" th:text="Мужской"></option>
+            </select>
           </div>
         </div>
         <div class="send">

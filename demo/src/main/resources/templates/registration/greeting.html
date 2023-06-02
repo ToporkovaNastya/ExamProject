@@ -17,8 +17,8 @@
             <a class="log3"   href="/"></a>
         </div>
       </div>
-      <button class="butt1" type="button" name="Мастера"><a class="a1" href="#">Мастера</a></button>
-      <button class="butt2" type="button" name="Услуги"><a class="a2" href="#">Услуги</a></button>
+      <button class="butt1" type="button" name="Мастера"><a class="a1" href="/masters">Мастера</a></button>
+      <button class="butt2" type="button" name="Услуги"><a class="a2" href="/services">Услуги</a></button>
       <button class="butt3" type="button" name="Вход"><a class="a3" href="/greeting">Вход</a></button>
     </div>
 
@@ -31,10 +31,11 @@
           <p> <a class="p2" href="/greeting2">Регистрация</a></p>
         </div>
         <form action="#" th:action="@{/direction}" th:object="${registration}" enctype="multipart/form-data"method="post">
+          <span class="span" th:text="${error}"/>
+          <span class="span" th:text="${errorPassword}"/>
         <div class="login2">
           <div class="login2-text">
               <label for="loginPassword" class="log-text">Логин</label>
-              <span th:text="${error}"/>
           </div>
           <div>
             <input id="loginPassword" class="login2-input" th:field="*{login}" type="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}" required>
@@ -43,7 +44,6 @@
           <div class="password">
             <div class="password-frame">
               <label for="userPassword" class="password-text">Пароль</label>
-              <span th:text="${errorPassword}"/>
             </div>
             <div>
               <input id="userPassword" class="password-input" th:field="*{password}"type="password" name="password" pattern="[0-9]{8}" required>

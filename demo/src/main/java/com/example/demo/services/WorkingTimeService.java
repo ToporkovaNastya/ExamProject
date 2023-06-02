@@ -20,15 +20,15 @@ public class WorkingTimeService
     @Autowired
     private SqlServerJdbcConfig connection;
 
-    public List<MasterTime> getHours()
+    public List<MasterTime> getHours(int id_master, Date date, int service_id)
     {
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
-        return jdbc.query("Select * FROM [dbo].[WorkingTime2] ORDER BY id",new MasterTimeMapper());
+        return jdbc.query("Select * FROM [dbo].[WorkingTime2]  WHERE [WorkingTime2].[id_мастера] = "+id_master+" AND  [WorkingTime2].[Дата] = '"+date+"' AND id_услуги = "+service_id+" ORDER by value;",new MasterTimeMapper());
     }
-    public List<AppointmentId> avaliableHours(int id_master, Date date)
+    public List<AppointmentId> avaliableHours(int id_master, Date date, int service_id)
     {
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
-        return jdbc.query("Select id_времени FROM [dbo].[Appoinment] WHERE [Appoinment].[id_мастера] = '"+id_master+"' AND  [Appoinment].[Дата] = '"+date+"';",new AppointmentIdMapper());
+        return jdbc.query("Select id_времени FROM [dbo].[Appoinment] WHERE [Appoinment].[id_мастера] = "+id_master+" AND  [Appoinment].[Дата] = '"+date+"' AND id_услуги = "+service_id+";",new AppointmentIdMapper());
     }
 
 }

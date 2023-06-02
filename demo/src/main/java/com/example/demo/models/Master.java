@@ -1,12 +1,14 @@
 package com.example.demo.models;
 
+import java.sql.Date;
+
 public class Master
 {
     private int id;
     private String surname;
     private  String name;
     private String patronymic;
-    private String date;
+    private Date date;
     private String gender;
     private String telephone;
     private String grade;
@@ -19,7 +21,7 @@ public class Master
     public Master() {
     }
 
-    public Master(int id, String surname, String name, String patronymic, String date,
+    public Master(int id, String surname, String name, String patronymic, Date date,
                   String gender, String telephone, String grade, String experience,
                   String post, String education, String email, String desc)
     {
@@ -70,11 +72,11 @@ public class Master
         this.patronymic = patronymic;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

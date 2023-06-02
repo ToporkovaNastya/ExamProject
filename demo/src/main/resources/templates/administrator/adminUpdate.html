@@ -14,11 +14,11 @@
     <div class="IMG LOGO">
       <div class="logo">
         <img class="log3"  src="images/logo.png" alt="Логотип">
-        <a class="log3"   href="/index"></a>
+        <a class="log3"   href="/"></a>
       </div>
     </div>
-    <button class="butt1" type="button" name="Мастера"><a class="a1" href="#">Мастера</a></button>
-    <button class="butt2" type="button" name="Услуги"><a class="a2" href="#">Услуги</a></button>
+    <button class="butt1" type="button" name="Мастера"><a class="a1" href="/masters">Мастера</a></button>
+    <button class="butt2" type="button" name="Услуги"><a class="a2" href="/services">Услуги</a></button>
     <div th:switch="${loginIn}">
       <button id="1" th:case="'true'"class="butt3" type="button" name="Вход"><a  class="a3" href="/directionPage">Личный кабинет</a></button>
       <button id="2" th:case="'false'"class="butt3" type="button" name="Вход"><a class="a3" href="/greeting">Вход</a></button>
@@ -55,7 +55,6 @@
     <div>
       <div> <button class="f1" type="button" name="Мастер"><a class="fun1" href="/admin">Мастера</a></button></div>
       <div><button class="f2" type="button" name="Услуги"><a class="fun2" href="/service">Услуги</a></button></div>
-      <div><button class="f3" type="button" name="Отзывы"><a class="fun3" href="/admin">Отзывы</a></button></div>
     </div>
   </div>
   <div> <button  class="signOut" type="button" name="Выход"><a class="signOut-text" href="/signOut">Выйти</a></button></div>
@@ -98,13 +97,16 @@
             <label for="dateId" class="date-text">Дата рождения</label>
           </div>
           <div>
-            <input id="dateId" class="input-dat" type="text" name="date" th:field="*{date}" required>
+            <input id="dateId" class="input-dat" type="date" name="date" th:field="*{date}" required>
           </div>
           <div class="gender">
             <label for="genderId" class="gender-text">Пол</label>
           </div>
           <div>
-            <input id="genderId" class="input-gender" type="text" name="gender" th:field="*{gender}" pattern="^[а-яА-ЯёЁ]+$" required>
+            <select name="gender" th:field="*{gender}" pattern="^[а-яА-ЯёЁ]+$"  class="input-gender" id="genderId" required>
+              <option th:value="'Женский'" th:text="Женский"></option>
+              <option th:value="'Мужской'" th:text="Мужской"></option>
+            </select>
           </div>
           <div class="tel">
             <label for="telId" class="tel-text">Телефон</label>
@@ -116,7 +118,11 @@
             <label for="gradeId" class="grade-text">Грейд</label>
           </div>
           <div>
-            <input id="gradeId" class="input-grade" type="text" name="grade" th:field="*{grade}"required>
+            <select name="grade" th:field="*{grade}" class="input-grade" id="gradeId" required>
+              <option th:value="'Топ-мастер'" th:text="Топ-мастер"></option>
+              <option th:value="'Мидл-мастер'" th:text="Мидл-мастер"></option>
+              <option th:value="'Синьор-мастер'" th:text="Синьор-мастер"></option>
+            </select>
           </div>
           <div class="exp">
             <label for="expId" class="exp-text">Стаж</label>

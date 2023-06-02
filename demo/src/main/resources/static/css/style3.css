@@ -344,19 +344,19 @@ body { margin:0;}
 .reg
 {
   position: absolute;
-  width: 937px;
+  width: 1000px;
   height: 68px;
   left: 393px;
   top: 115px;
   font-family: 'Lobster';
   font-style: normal;
   font-weight: 400;
-  font-size: 64px;
+  font-size: 35px;
   line-height: 80px;
   display: flex;
-  align-items: center;
   text-align: center;
   color: #000000;
+  align-items: center;
 }
 .confirm-password
 {

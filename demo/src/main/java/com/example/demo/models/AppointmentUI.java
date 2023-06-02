@@ -7,20 +7,25 @@ public class AppointmentUI
     private String name;
     private String program;
     private String level;
+    private int master_id;
     private String masterName;
     private Date date;
     private int hallNumber;
+    private int id_time;
 
     public AppointmentUI() {
     }
 
-    public AppointmentUI(String name, String program, String level, String masterName, Date date, int hallNumber) {
+
+    public AppointmentUI(String name, String program, String level, int master_id, String masterName, Date date, int hallNumber, int id_time) {
         this.name = name;
         this.program = program;
         this.level = level;
+        this.master_id = master_id;
         this.masterName = masterName;
         this.date = date;
         this.hallNumber = hallNumber;
+        this.id_time = id_time;
     }
 
     public String getName() {
@@ -69,5 +74,21 @@ public class AppointmentUI
 
     public void setHallNumber(int hallNumber) {
         this.hallNumber = hallNumber;
+    }
+
+    public int getMaster_id() {
+        return master_id;
+    }
+
+    public void setMaster_id(int master_id) {
+        this.master_id = master_id;
+    }
+
+    public int getId_time() {
+        return id_time;
+    }
+
+    public void setId_time(int id_time) {
+        this.id_time = id_time;
     }
 }

@@ -47,8 +47,8 @@ public class GreetingController
         {
             return "redirect:/directionPage";
         }
-        var value = error!=null && error.equals("NotFound") ?"Пользователя с таким логином нет":"";
-        var value2 = errorPassword!=null && errorPassword.equals("NotMatch") ?"Вы ввели неверный пароль, попробуйте еще":"";
+        var value = error!=null && error.equals("NotFound") ?"Вы ввели неверный логин или пароль, попробуйте еще":"";
+        var value2 = errorPassword!=null && errorPassword.equals("NotMatch") ?"Вы ввели неверный логин или  пароль, попробуйте еще":"";
         model.addAttribute("registration", new Registration());
         if(value!=null)  model.addAttribute("error",value);
         if(value2!=null)  model.addAttribute("errorPassword",value2);

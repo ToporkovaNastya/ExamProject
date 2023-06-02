@@ -3,50 +3,100 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Добавить время</title>
+    <title>Расписание</title>
     <link rel="stylesheet" href="css/style11.css">
 </head>
 <body>
-    <div>
-        <form id="masterForm" action="#" th:action="@{/masterTime}"  th:object="${masterTime}" enctype="multipart/form-data"method="post">
-            <div>
-                <div hidden class="surname">
-                    <input id="surnameId" class="input-data" type="text" name="surname" th:field="*{master_id}">
-                </div>
-                <div>
-                    <input hidden id="dateId" class="input-dat" type="text" name="date" th:field="*{service_id}">
-                </div>
-
-                <div class="gender">
-                    <label for="genderId" class="gender-text">Дата</label>
-                </div>
-                <div>
-                    <input id="genderId" class="input-gender" type="date" name="gender" th:field="*{date}"  required>
-                </div>
-
-                <div class="tel">
-                    <label for="telId" class="tel-text">Добавить время</label>
-                </div>
-                <div>
-                    <input id="telId" class="input-tel" type="text" name="gender" th:field="*{value}"  required>
-                </div>
-
-                <div class="send">
-                    <input class="send-text" type="submit" name="send" value="Добавить">
-                </div>
-
+<div class="container">
+    <div class="header">
+        <div class="IMG LOGO">
+            <div class="logo">
+                <img class="log3"  src="images/logo.png" alt="Логотип">
+                <a class="log3"   href="/"></a>
             </div>
-        </form>
-
-        <div th:each="work: ${works}">
-            <div th:switch="${work.disabled}">
-                <label style="background:white;" th:case="true" th:for="|work.id-${work.id_hour}|" th:text="${work.value}">
-                <input  type="radio" style="display: none;" th:id="|work.id-${work.id_hour}|" name="|work.id-${work.id_hour}|" disabled th:value="${work.value}" />  </label>
-                <label style="background:blue;" th:case="false" th:for="|work.id-${work.id_hour}|" th:text="${work.value}">
-                <input  type="radio" style="display: none;"th:id="|work.id-${work.id_hour}|" name="|work.id-${work.id_hour}|"  th:value="${work.value}" /></label>
-
+        </div>
+        <button class="butt1" type="button" name="Мастера"><a class="a1" href="/masters">Мастера</a></button>
+        <button class="butt2" type="button" name="Услуги"><a class="a2" href="/services">Услуги</a></button>
+        <div th:switch="${loginIn}">
+            <button id="1" th:case="'true'"class="butt3" type="button" name="Вход"><a  class="a3" href="/directionPage">Личный кабинет</a></button>
+            <button id="2" th:case="'false'"class="butt3" type="button" name="Вход"><a class="a3" href="/greeting">Вход</a></button>
+        </div>
+    </div>
+    <div class="profile">
+        <div>
+            <div class="flex">
+                <div class="imgPr"><img  class="adminJpg" src="images/admin.jpg"> </div>
+                <div>
+                    <div class="fio">
+                        <div class="fio-text" th:text="${master.surname}"/>
+                        <div class="fio-text1" th:text="${master.name}"/>
+                        <div class="fio-text2" th:text="${master.patronymic}"/>
+                    </div>
+                    <div class="dop-inf">
+                        <div class="region">
+                            <div class="region-text" th:text="${master.telephone}"/>
+                        </div>
+                        <div class="date">
+                            <div class="date-text" th:text="${master.date}"/>
+                        </div>
+                        <div class="email">
+                            <div class="email-text" th:text="${master.email}"/>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
+<div class="func">
+    <div>
+        <div> <button class="f1" type="button" name="История"><a class="fun1" href="/masterHistory">История</a></button></div>
+        <div><button class="f2" type="button" name="Записи"><a class="fun2" href="/masterAp">Записи</a></button></div>
+        <div><button class="f4" type="button" name="Отзывы"><a class="fun4" href="/master">Услуги</a></button></div>
+    </div>
+</div>
+<div> <button  class="signOut" type="button" name="Выход"><a class="signOut-text" href="/signOutMs">Выйти</a></button></div>
+<div clas="redactor-flex">
+    <div class="redactor-menu">
+        <div> <button class="f6" type="button" name="Мас"><a class="f6-text" href="/master">Мои Услуги</a></button></div>
+    </div>
+    <div class="redactor-inf">
+        <div class="redactor-header">
+            <p class="redactor-header-text">Услуги</p>
+        </div>
+        <span class="span" th:text="${error}"/>
+        <div class="time">
+            <div class="greeting-time">
+                <p class="greeting-time-text" th:text="'Часы работы на  ' + ${masterTime.date}"></p>
+            </div>
+            <div class="tim-flex" th:each="work: ${works}" >
+                <div th:switch="${work.disabled}">
+                    <label class="forbid"  th:case="true" th:for="|work.id-${work.id_hour}|" th:text="${work.value}">
+                        <input  type="radio" style="display: none;" th:id="|work.id-${work.id_hour}|" name="|work.id-${work.id_hour}|" disabled th:value="${work.value}" />  </label>
+                    <label class="notForbid"  th:case="false" th:for="|work.id-${work.id_hour}|" th:text="${work.value}">
+                        <input  type="radio" style="display: none;"th:id="|work.id-${work.id_hour}|" name="|work.id-${work.id_hour}|"  th:value="${work.value}" /></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="footer">
+    <div class="log4">
+        <p class="log4P">© 2009-2023 Салон красоты и здоровья «Le Stelle» Все права защищены </p>
+    </div>
+    <div><button class="butt4" type="button" name="Телефон"><a class="a6">+7 (8452) 29-67-28</a></button></div>
+    <div class= "log5">
+        <img class="img3" src="images/image 3.png" alt="Картинка whatsApp">
+    </div>
+    <div class= "log6">
+        <img class="img4" src="images/image 1.png" alt="Картинка Telegram">
+    </div>
+    <div class= "log7">
+        <img class="img5" src="images/image 2.png" alt="Картинка whatsApp">
+    </div>
+</div>
+</div>
 </body>
 </html>

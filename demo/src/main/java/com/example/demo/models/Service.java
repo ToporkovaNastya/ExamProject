@@ -29,7 +29,7 @@ public class Service
     }
 
     public void setId(int id) {
-        Id = id;
+        this.Id = id;
     }
 
     public String getName() {

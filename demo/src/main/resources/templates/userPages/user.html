@@ -17,13 +17,14 @@
                 <a class="log3"   href="/"></a>
             </div>
         </div>
-        <button class="butt1" type="button" name="Мастера"><a class="a1" href="#">Мастера</a></button>
-        <button class="butt2" type="button" name="Услуги"><a class="a2" href="#">Услуги</a></button>
+        <button class="butt1" type="button" name="Мастера"><a class="a1" href="/masters">Мастера</a></button>
+        <button class="butt2" type="button" name="Услуги"><a class="a2" href="/services">Услуги</a></button>
         <div th:switch="${loginIn}">
             <button id="1" th:case="'true'"class="butt3" type="button" name="Вход"><a  class="a3" href="/directionPage">Личный кабинет</a></button>
             <button id="2" th:case="'false'"class="butt3" type="button" name="Вход"><a class="a3" href="/greeting">Вход</a></button>
         </div>
     </div>
+
     <div class="profile">
         <div>
             <div class="flex">
@@ -46,15 +47,15 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
+
     <div class="func">
         <div>
-            <div> <button class="f1" type="button" name="Мастер"><a class="fun1" href="/admin">История</a></button></div>
+            <div> <button class="f1" type="button" name="Мастер"><a class="fun1" href="/history">История</a></button></div>
             <div><button class="f2" type="button" name="Услуги"><a class="fun2" href="/user">Записи</a></button></div>
-            <div><button class="f3" type="button" name="Отзывы"><a class="fun3" href="/admin">Отзывы</a></button></div>
+            <div><button class="f3" type="button" name="Отзывы"><a class="fun3" href="/message">Cообщения</a></button></div>
         </div>
     </div>
     <div> <button  class="signOut" type="button" name="Выход"><a class="signOut-text" href="/signOutUs">Выйти</a></button></div>
@@ -69,39 +70,46 @@
             </div>
             <div class="redactor-inf">
                 <div class="card">
-                    <div class="card-fl" th:each="record: ${records}">
+                    <div class="card-fl" th:each="appointment: ${appointments}">
                         <div class="service-fio">
-                            <div class="service" th:text="${record.name}"/>
+                            <div class="service" th:text="'Запись №'+ ${appointment.id}"/>
+                        </div>
+                        <div class="master-date1">
+                            <div class="d-flex">
+                                <label class="d-text">Услуга и цена: <div class="master-date-text"th:text="${appointment.serviceName} + ', '+ ${appointment.price}"/></label>
+                            </div>
                         </div>
                         <div class="master-date">
                             <div class="d-flex">
-                                <label class="d-text">Программа: <div class="master-date-text"th:text="${record.program}"/></label>
+                                <label class="d-text">Программа: <div class="master-date-text"th:text="${appointment.program}"/></label>
                             </div>
                         </div>
                         <div class="master-telephone">
                             <div class="d-flex">
-                                <label class="d-text">Уровень сложности:<div class="master-telephone-text" th:text="${record.level}"/></label>
+                                <label class="d-text">Уровень сложности:<div class="master-telephone-text" th:text="${appointment.level}"/></label>
                             </div>
                         </div>
                         <div class="master-post1">
                             <div class="d-flex">
-                                <label class="d-text">Мастер:<div  class="master-post-text" th:text="${record.Id_master}"/></label>
+                                <label class="d-text">Мастер:<div  class="master-post-text" th:text="${appointment.masterSurname} + ' '+ ${appointment.masterName} + ' '+ ${appointment.masterPatronymic}"/></label>
                             </div>
                         </div>
                         <div class="master-post">
                             <div class="d-flex">
-                                <label class="d-text">Дата и время:<div class="master-grade-text" th:text="${record.date}"/></label>
+                                <label class="d-text">Дата и время:<div class="master-grade-text" th:text="${appointment.date} + ', ' + ${appointment.timeValue}"/></label>
                             </div>
                         </div>
                         <div class="master-education">
                             <div class="d-flex">
-                                <label class="d-text">Номер зала:<div class="master-education-text" th:text="${record.hallNumber}"/></label>
+                                <label class="d-text">Номер зала:<div class="master-education-text" th:text="${appointment.hallNumber}"/></label>
                             </div>
                         </div>
-                        <div class="f-flex">
-                            <div> <button class="del" type="button" name="Удалить"><a class="del-text" th:href="|/deleteSer?id=${record.id}|">Удалить</a></button></div>
-                            <div> <button class="upd" type="button" name="Обновить"><a class="upd-text" href="/add">Обновить</a></button></div>
+                        <div class="master-post">
+                            <div class="d-flex">
+                                <label class="d-text">Cтатус согласования:<div class="master-grade-text" th:text="${appointment.stAgr}"/></label>
+                            </div>
                         </div>
+                        <div> <button class="del" type="button" name="Удалить"><a class="del-text" th:href="|/preventApp?id=${appointment.id}|">Отменить</a></button></div>
                     </div>
                 </div>
             </div>

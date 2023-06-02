@@ -75,20 +75,7 @@ public class AdminController
         }
         return "administrator/service";
     }
-    @GetMapping("/masters")
-    public String getAllMasters(Model model)
-    {
-        var ms= service.getMasters();
-        model.addAttribute("masters",ms);
-        if(user.signIn())
-        {
-            model.addAttribute("loginIn","true");
-        }else
-        {
-            model.addAttribute("loginIn","false");
-        }
-        return "mainPages/masterMain";
-    }
+    
     @GetMapping("/signOut")
     public String signOut()
     {
@@ -202,7 +189,7 @@ public class AdminController
         {
             model.addAttribute("loginIn","false");
         }
-        return "administrator/service";
+        return "redirect:/service";
     }
     @GetMapping("/addSer")
     public String getServiceAdd(Model model)
@@ -230,8 +217,40 @@ public class AdminController
         model.addAttribute("admin",ad);
         var serv = service.getServices();
         model.addAttribute("services",serv);
-        var master = service.getMaster(ser.getId_master());
-        model.addAttribute("master",master);
+        if(user.signIn())
+        {
+            model.addAttribute("loginIn","true");
+        }else
+        {
+            model.addAttribute("loginIn","false");
+        }
+        return "redirect:/service";
+    }
+    @GetMapping("/updateSer")
+    public String updateSer(Model model, int id)
+    {
+        var ad = service.getLoginAdmin();
+        model.addAttribute("admin",ad);
+        var  s = service.getService(id);
+        model.addAttribute("service",s);
+        var ms= service.getMasters();
+        model.addAttribute("masters",ms);
+        if(user.signIn())
+        {
+            model.addAttribute("loginIn","true");
+        }else
+        {
+            model.addAttribute("loginIn","false");
+        }
+        return "administrator/updateSer";
+    }
+    @PostMapping("/updateSer")
+    public String upd(Model model, @ModelAttribute Service serv)
+    {
+        var ad = service.getLoginAdmin();
+        model.addAttribute("admin",ad);
+        var  ms = service.getService(serv.getId());
+        service.updateSer(serv);
         if(user.signIn())
         {
             model.addAttribute("loginIn","true");

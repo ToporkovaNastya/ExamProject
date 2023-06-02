@@ -121,7 +121,7 @@ public class AdminService
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
         jdbc.execute("UPDATE Master SET [Фамилия]='"+ master.getSurname()+
                 "', Имя='" + master.getName()+
-                "', Отчество='" + master.getSurname()+
+                "', Отчество='" + master.getPatronymic()+
                 "', Дата_рождения='" + master.getDate()+
                 "', Пол='" + master.getGender()+
                 "', Телефон='" + master.getTelephone()+
@@ -193,7 +193,22 @@ public class AdminService
     public Master getMaster(int id)
     {
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
-        return jdbc.queryForObject("SELECT * FROM [dbo].[Master] WHERE [Master].[id] = '"+id+"';",new MasterMapper());
+        return jdbc.queryForObject("SELECT * FROM [dbo].[Master] WHERE [Master].[id] = "+id+";",new MasterMapper());
     }
-
+    public Service getService(int id)
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        return jdbc.queryForObject("SELECT * FROM [dbo].[Service] WHERE [Service].[id] = "+id+";",new ServiceMapper());
+    }
+    public void updateSer(Service service)
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        jdbc.execute("UPDATE Service SET [Название]='"+ service.getName()+
+                "', Программа='" + service.getProgram()+
+                "', Уровень_сложности='" + service.getLevel()+
+                "', id_мастера='" + service.getId_master()+
+                "', Описание='" + service.getDescription()+
+                "', Стоимость='" + service.getPrice()+"' " +
+                "  WHERE id='" + service.getId()+"';");
+    }
 }

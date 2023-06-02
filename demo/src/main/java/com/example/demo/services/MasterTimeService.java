@@ -35,14 +35,20 @@ public class MasterTimeService
                         "           ,'"+masterTime.getDate()+"'"+
                         "           ,'"+masterTime.getValue()+"')");
     }
-    public List<MasterTime> getHours(int master_id,Date date)
+    public List<MasterTime> getHours(int master_id,Date date, int service_id)
     {
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
-        return jdbc.query("Select * FROM [dbo].[WorkingTime2] WHERE id_мастера = "+master_id+" AND Дата = '"+date+"'",new MasterTimeMapper());
+        return jdbc.query("Select * FROM [dbo].[WorkingTime2] WHERE id_мастера = "+master_id+" AND Дата = '"+date+"' AND id_услуги = "+service_id+" ORDER BY value;",new MasterTimeMapper());
     }
-    public List<AppointmentId> avaliableHours(int id_master, Date date)
+    public Boolean getValues(int master_id,Date date, int service_id,String value)
     {
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
-        return jdbc.query("Select id_времени FROM [dbo].[Appoinment] WHERE [Appoinment].[id_мастера] = "+id_master+" AND  [Appoinment].[Дата] = '"+date+"';",new AppointmentIdMapper());
+        var f = jdbc.queryForObject("Select COUNT(*) FROM [dbo].[WorkingTime2] WHERE id_мастера = "+master_id+" AND Дата = '"+date+"' AND id_услуги = "+service_id+" AND value = '"+value+"' ;", Integer.class);
+        return f>0;
+    }
+    public List<AppointmentId> avaliableHours(int id_master, Date date, int service_id)
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        return jdbc.query("Select id_времени FROM [dbo].[Appoinment] WHERE [Appoinment].[id_мастера] = "+id_master+" AND  [Appoinment].[Дата] = '"+date+"' AND id_услуги = "+service_id+";",new AppointmentIdMapper());
     }
 }

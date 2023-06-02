@@ -17,7 +17,7 @@ public class MasterMapper implements RowMapper<Master>
         master.setSurname(rs.getString("Фамилия"));
         master.setName(rs.getString("Имя"));
         master.setPatronymic(rs.getString("Отчество"));
-        master.setDate(rs.getString("Дата_рождения"));
+        master.setDate(rs.getDate("Дата_рождения"));
         master.setGender(String.valueOf(rs.getString("Пол").charAt(0)));
         master.setTelephone(rs.getString("Телефон"));
         master.setGrade(rs.getString("Грейд"));

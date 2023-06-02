@@ -19,6 +19,8 @@ public class AppointmentMapper implements RowMapper<Appointment>
         app.setId_time(rs.getInt("id_времени"));
         app.setId_user(rs.getInt("id_пользователя"));
         app.setHallNumber(rs.getInt("Номер_зала"));
+        app.setStDone(rs.getString("Статус_исполнения"));
+        app.setStAgr(rs.getString("Статус_согласования"));
         return app;
     }
 }

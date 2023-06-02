@@ -304,24 +304,20 @@ body { margin:0;}
 .date-text
 {
     position: absolute;
-    width: 178px;
+    width: 378px;
     height: 44px;
     left: 9px;
     top: 4px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 36px;
     line-height: 44px;
     /* identical to box height */
-
     display: flex;
     align-items: center;
     text-align: center;
-
     color: #000000;
-
 }
 .email
 {
@@ -369,7 +365,7 @@ body { margin:0;}
     position: absolute;
     width: 1247.84px;
     height: 222px;
-    left: 380px;
+    left: 410px;
     top: 590px;
  }
  .f1
@@ -438,22 +434,22 @@ body { margin:0;}
  .f3
  {
     position: absolute;
-    width: 374.42px;
+    width: 430.42px;
     height: 222px;
     left: 800px;
     top: 0px;
-    background: #FFF0A0;
+    background: #FF0CF5;
  }
  .f3:hover
  {
-    background: #FADA31;
+    background: #A3039C;
  }
  .fun3
  {
     position: absolute;
-    width: 199px;
+    width: 250px;
     height: 77px;
-    left: 60px;
+    left: 30px;
     top: 72px;
     font-family: 'Inter';
     font-style: normal;
@@ -720,17 +716,16 @@ body { margin:0;}
  .card
  {
     width: 1086px;
-    height: 412px;
+    height: 512px;
     left: 41px;
     top: 64px;
-
  }
 
 .card-fl
 {
   margin: 35px;
   background: #7232C6;
-  height: 420px;
+  height: 620px;
   width: 1086px;
 }
 .service-fio
@@ -770,10 +765,16 @@ body { margin:0;}
     height: 56px;
     background: #D2BAFA;
 }
+.master-date1
+{
+    width: 1086px;
+    height: 56px;
+    background: #B78BFF;
+}
 
 .master-date-text
 {
-    width: 105px;
+    width: 305px;
     height: 48px;
     font-family: 'Inter';
     font-size: 40px;
@@ -837,7 +838,7 @@ master-post
 }
 .master-post-text
 {
-    width: 378px;
+    width: 678px;
     height: 48px;
     font-family: 'Inter';
     font-style: normal;
@@ -845,7 +846,6 @@ master-post
     font-size: 40px;
     line-height: 48px;
     display: flex;
-    align-items: center;
     text-align: center;
     color: #000000;
     margin-left: 20px;
@@ -886,8 +886,10 @@ master-post
     left: 104px;
     top: 293px;
     background: rgba(255, 255, 255, 0.75);
-    margin-top:10px;
+    margin-top: 60px;
     border:0px;
+    /* position: relative; */
+    margin-left: 440px;
 }
 .del:hover
 {
@@ -895,7 +897,7 @@ master-post
 }
 .del-text
 {
-    width: 162px;
+    width: 281px;
     height: 48px;
     left: 105px;
     top: 4px;
@@ -908,6 +910,7 @@ master-post
     color: #000000;
     margin-left:60px;
     text-decoration:none;
+    margin-left: 36px;
 }
 .del-text:hover
 {
@@ -950,7 +953,7 @@ master-post
 }
 .master-grade-text
 {
-    width: 300px;
+    width: 400px;
     height: 48px;
     font-family: 'Inter';
     font-style: normal;
