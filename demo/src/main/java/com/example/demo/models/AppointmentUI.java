@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class AppointmentUI
 {
+    private int id;
     private String name;
     private String program;
     private String level;
@@ -17,7 +18,10 @@ public class AppointmentUI
     }
 
 
-    public AppointmentUI(String name, String program, String level, int master_id, String masterName, Date date, int hallNumber, int id_time) {
+    public AppointmentUI(int id,String name, String program, String level,
+                         int master_id, String masterName, Date date, int hallNumber, int id_time)
+    {
+        this.id = id;
         this.name = name;
         this.program = program;
         this.level = level;
@@ -90,5 +94,13 @@ public class AppointmentUI
 
     public void setId_time(int id_time) {
         this.id_time = id_time;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

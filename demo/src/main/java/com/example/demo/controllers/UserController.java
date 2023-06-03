@@ -5,8 +5,11 @@ import com.example.demo.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Date;
 import java.text.ParseException;
@@ -49,59 +52,63 @@ public class UserController
         ap.addUserHistory(res);
         return "redirect:/user";
     }
+    @PostMapping("/userSer")
+    public String direction ()
+    {
+        return "redirect:/user";
+    }
     @GetMapping("/user")
-    public String user (Model model)
-    {  /*
+    public ModelAndView user (ModelMap model)
+    {
         if(user.signIn())
         {
+            model.addAttribute("error2","");
             if(user.signInRole()==1)
             {
-                return new ModelAndView("user",model);
+                var us = user.getLoginUser();
+                model.addAttribute("user",us);
+                var aps = ap.getApps(us.getId());
+                List<AppointmentUI2> lst = new ArrayList<>();
+                for(var a:aps)
+                {
+                    var apUi = new AppointmentUI2();
+                    apUi.setId(a.getId());
+                    var s = ap.getProgram(a.getId_service());
+                    apUi.setServiceName(s.getName());
+                    apUi.setProgram(s.getProgram());
+                    apUi.setLevel(s.getLevel());
+                    var m = ap.getMaster(a.getId_master());
+                    apUi.setMasterSurname(m.getSurname());
+                    apUi.setMasterName(m.getName());
+                    apUi.setMasterPatronymic(m.getPatronymic());
+                    apUi.setPrice(s.getPrice());
+                    apUi.setDate(a.getDate());
+                    var t = ap.getTime(a.getId_time());
+                    apUi.setTimeValue(t.getValue());
+                    apUi.setHallNumber(a.getHallNumber());
+                    apUi.setStAgr(a.getStAgr());
+                    lst.add(apUi);
+                }
+                model.addAttribute("appointments",lst);
+                if(user.signIn())
+                {
+                    model.addAttribute("loginIn","true");
+                }else
+                {
+                    model.addAttribute("loginIn","false");
+                }
+                return new ModelAndView("userPages/user",model);
             }else
             {
                 model.addAttribute("error2","deny");
-                return new ModelAndView("redirect:/error",model);
+                return new ModelAndView("redirect:/errors",model);
             }
-
         }
         else
         {
             model.addAttribute("error2","notLog");
-            return new ModelAndView("redirect:/error",model);
-        }*/
-        var us = user.getLoginUser();
-        model.addAttribute("user",us);
-        var aps = ap.getApps(us.getId());
-        List<AppointmentUI2> lst = new ArrayList<>();
-        for(var a:aps)
-        {
-           var apUi = new AppointmentUI2();
-           apUi.setId(a.getId());
-           var s = ap.getProgram(a.getId_service());
-           apUi.setServiceName(s.getName());
-           apUi.setProgram(s.getProgram());
-           apUi.setLevel(s.getLevel());
-           var m = ap.getMaster(a.getId_master());
-           apUi.setMasterSurname(m.getSurname());
-           apUi.setMasterName(m.getName());
-           apUi.setMasterPatronymic(m.getPatronymic());
-           apUi.setPrice(s.getPrice());
-           apUi.setDate(a.getDate());
-           var t = ap.getTime(a.getId_time());
-           apUi.setTimeValue(t.getValue());
-           apUi.setHallNumber(a.getHallNumber());
-           apUi.setStAgr(a.getStAgr());
-           lst.add(apUi);
+            return new ModelAndView("redirect:/errors",model);
         }
-        model.addAttribute("appointments",lst);
-        if(user.signIn())
-        {
-           model.addAttribute("loginIn","true");
-        }else
-         {
-            model.addAttribute("loginIn","false");
-         }
-            return "userPages/user";
     }
     @GetMapping("/signOutUs")
     public String signOut()
@@ -136,6 +143,7 @@ public class UserController
             uit.setProgram(prog.getProgram());
             uit.setLevel(prog.getLevel());
             uit.setMaster_id(prog.getId_master());
+            uit.setId(id);
             var master = ap.getMaster(prog.getId_master());
             uit.setMasterName(master.getName());
         }

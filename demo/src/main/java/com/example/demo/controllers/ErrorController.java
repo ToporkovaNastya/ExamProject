@@ -9,13 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class ErrorController
 {
     @GetMapping("/error")
-    public String error ( Model model,String error2)
+    public String error(Model model,String error2)
     {
         model.addAttribute("error","");
         if(error2.equals("deny"))
         {
             model.addAttribute("error","У вас не хватает прав");
         }
-        return "exception/errors";
+        return "errors";
     }
 }

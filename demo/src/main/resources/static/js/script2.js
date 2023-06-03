@@ -21,17 +21,15 @@ document.getElementById('masterForm').onsubmit = verifyButton;
 document.getElementById('tel2Id').onclick = verify;*/
 
 const selectElement = document.querySelector("#nameId");
-
-//var item = localStorage.getItem('sortId');
-//if(item!=null) selectElement.value = item;
+const urlParams = new URLSearchParams(window.location.search);
+const myParam = urlParams.get('id_service');
+selectElement.value = myParam;
 
 const element = document.getElementById('tel2Id');
 
 selectElement.addEventListener("change", (event) =>
 {
       alert(event.target.value);
-     //var value = selectElement.options[selectElement.selectedIndex].value;
-     //localStorage.setItem('sortId', value);
       window.location = '/appointment?id_service='+event.target.value;
 
 });
@@ -39,7 +37,6 @@ element.addEventListener("click",(event) =>
 {
     const value = document.getElementById("telId").value;
     const master = document.getElementById("masterId").value;
-    //const date = new Date(value);
     window.location = '/time'+window.location.search+"&data="+value+"&id_master="+master;
 });
 const submit = document.getElementById("submit");

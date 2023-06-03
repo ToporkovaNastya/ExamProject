@@ -73,7 +73,7 @@
       </div>
     </div>
     <div class="input">
-      <form id="masterForm" action="#" th:action="@{/}"  th:object="${appointmentUI}" enctype="multipart/form-data"method="post">
+      <form id="masterForm" action="#" th:action="@{/userSer}"  th:object="${appointmentUI}" enctype="multipart/form-data"method="post">
         <div>
           <div class="frame">
             <label for="nameId" class="surname-text">Название</label>
@@ -81,7 +81,7 @@
           <div class="surname" >
             <select id="nameId" th:field="*{name}"  class="input-data" name="name" required>
               <option value="">Select One …</option>
-              <option  th:each="service: ${services}" th:value="${service.id}" th:text="${service.name} + '  ' + ${service.surname}+ '  ' + ${service.masterName} + '  ' + ${service.price}" required></option>
+              <option th:each="service: ${services}" th:value="${service.id}" th:text="${service.name} + '  ' + ${service.surname}+ '  ' + ${service.masterName} + '  ' + ${service.price}" required></option>
             </select>
           </div>
           <div class="name">
