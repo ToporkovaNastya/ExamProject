@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ErrorController
 {
-    @GetMapping("/error")
+    @GetMapping("/accessError")
     public String error(Model model,String error2)
     {
         model.addAttribute("error","");
@@ -16,6 +16,10 @@ public class ErrorController
         {
             model.addAttribute("error","У вас не хватает прав");
         }
-        return "errors";
+        if(error2.equals("notLog"))
+        {
+            model.addAttribute("error","Вы не вошли в систему");
+        }
+        return "exceptions/errors";
     }
 }

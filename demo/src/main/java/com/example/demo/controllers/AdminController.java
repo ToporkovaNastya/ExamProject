@@ -12,9 +12,11 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 
 import java.sql.SQLException;
@@ -33,20 +35,28 @@ public class AdminController
     @Autowired
     RegistrationService regSer;
     @GetMapping("/admin")
-    public String getAdmin(Model model)
+    public ModelAndView getAdmin(ModelMap model)
     {
-        var ad = service.getLoginAdmin();
-        model.addAttribute("admin",ad);
-        var ms= service.getMasters();
-        model.addAttribute("masters",ms);
         if(user.signIn())
         {
-            model.addAttribute("loginIn","true");
-        }else
-        {
-            model.addAttribute("loginIn","false");
+           model.addAttribute("error2", "");
+            if (user.signInRole() == 2)
+            {
+                  var ad = service.getLoginAdmin();
+                  model.addAttribute("admin", ad);
+                  var ms = service.getMasters();
+                  model.addAttribute("masters", ms);
+                  model.addAttribute("loginIn", "true");
+                  return new ModelAndView("administrator/admin",model);
+            }else {
+                    model.addAttribute("loginIn", "false");
+                    model.addAttribute("error2","deny");
+                    return new ModelAndView("redirect:/accessError",model);
+                  }
+        }else {
+            model.addAttribute("error2","notLog");
+            return new ModelAndView("redirect:/accessError",model);
         }
-        return "administrator/admin";
     }
     @GetMapping("/service")
     public String getService(Model model,@ModelAttribute Service sr)

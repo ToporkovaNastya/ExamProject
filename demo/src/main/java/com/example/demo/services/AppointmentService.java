@@ -107,17 +107,17 @@ public class AppointmentService
     public List<Appointment> getHistory(int id)
     {
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
-        return jdbc.query("Select * FROM [dbo].[User_History] WHERE [User_History].[id_пользователя] = "+id+"  AND ( [Статус_исполнения]='Исполнено' OR [Статус_исполнения]='Отказано в исполнении') ;",new AppointmentMapper());
+        return jdbc.query("Select * FROM [dbo].[User_History] WHERE [User_History].[id_пользователя] = "+id+"  AND ( [Статус_исполнения]='Исполнено' OR [Статус_исполнения]='Отказано в исполнении' OR [Статус_исполнения]='Отменено пользователем') ;",new AppointmentMapper());
     }
     public List<Appointment> getMasterApps(int id)
     {
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
-        return jdbc.query("Select * FROM [dbo].[Appoinment] WHERE [Appoinment].[id_мастера] = "+id+"  AND [Статус_исполнения]='Не исполнено';",new AppointmentMapper());
+        return jdbc.query("Select * FROM [dbo].[Appoinment] WHERE [Appoinment].[id_мастера] = "+id+"  AND ([Статус_исполнения]='Не исполнено' OR [Статус_исполнения]='Отменено пользователем');",new AppointmentMapper());
     }
     public List<Appointment> getMasterHistory(int id)
     {
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
-        return jdbc.query("Select * FROM [dbo].[Appoinment] WHERE [Appoinment].[id_мастера] = "+id+"  AND ([Статус_исполнения]='Исполнено' OR  [Статус_исполнения]='Отказано в исполнении');",new AppointmentMapper());
+        return jdbc.query("Select * FROM [dbo].[Appoinment] WHERE [Appoinment].[id_мастера] = "+id+"  AND ([Статус_исполнения]='Исполнено' OR  [Статус_исполнения]='Отказано в исполнении' OR [Статус_исполнения]='Отменено пользователем');",new AppointmentMapper());
     }
     public void updateStAgr (int id)
     {
@@ -144,10 +144,20 @@ public class AppointmentService
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
         jdbc.execute("UPDATE [Appoinment] SET [Статус_исполнения] = 'Отказано в исполнении' WHERE [Appoinment].[id] = "+id+"; ");
     }
+    public void updateStDone3(int id)
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        jdbc.execute("UPDATE [Appoinment] SET [Статус_исполнения] = 'Отменено пользователем' WHERE [Appoinment].[id] = "+id+"; ");
+    }
     public void updateStDone2User(int id_time, Date date,int id_master,int id_service)
     {
         var jdbc = new JdbcTemplate(connection.mysqlDataSource());
         jdbc.execute("UPDATE [User_History] SET [Статус_исполнения] = 'Отказано в исполнении' WHERE id_времени = "+id_time+" AND Дата= '"+date+"' AND id_мастера = "+id_master+" AND id_услуги = "+id_service+";");
+    }
+    public void updateStDone3User(int id_time, Date date,int id_master,int id_service)
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        jdbc.execute("UPDATE [User_History] SET [Статус_исполнения] = 'Отменено пользователем' WHERE id_времени = "+id_time+" AND Дата= '"+date+"' AND id_мастера = "+id_master+" AND id_услуги = "+id_service+";");
     }
     public void deleteAppointment(int id)
     {

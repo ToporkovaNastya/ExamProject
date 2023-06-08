@@ -24,6 +24,11 @@ public class MasterService
         var f = jdbc.queryForObject("SELECT COUNT ([login_in]) FROM [User] WHERE [User].[login_in] =1 AND [User].[id_role] = 3;",Integer.class);
         return f>0;
     }
+    public Integer signInRole ()
+    {
+        var jdbc = new JdbcTemplate(connection.mysqlDataSource());
+        return jdbc.queryForObject("SELECT [id_role] FROM [User] WHERE [User].[login_in] =  1;",Integer.class);
+    }
     public Master getLoginMaster()
     {
         String email = signInEmail();

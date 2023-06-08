@@ -301,24 +301,20 @@ body { margin:0;}
 .date-text
 {
     position: absolute;
-    width: 178px;
+    width: 378px;
     height: 44px;
     left: 9px;
     top: 4px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 36px;
     line-height: 44px;
     /* identical to box height */
-
     display: flex;
     align-items: center;
     text-align: center;
-
     color: #000000;
-
 }
 .email
 {
@@ -440,6 +436,8 @@ body { margin:0;}
      left: 800px;
      top: 0px;
      background: #FF0CF5;
+     /* align-items: center; */
+     text-align: center;
   }
   .f3:hover
   {
@@ -447,21 +445,10 @@ body { margin:0;}
   }
   .fun3
   {
-     position: absolute;
-     width: 250px;
-     height: 77px;
-     left: 110px;
-     top: 72px;
      font-family: 'Inter';
-     font-style: normal;
-     font-weight: 400;
-     font-size: 64px;
-     line-height: 77px;
-     display: flex;
-     align-items: center;
-     text-align: center;
      color: #141414;
      text-decoration:none;
+     font-size: 64px;
   }
  .redactor
  {
@@ -807,7 +794,7 @@ body { margin:0;}
 }
 .master-grade-text
 {
-    width: 500px;
+    width: 550px;
     height: 48px;
     font-family: 'Inter';
     font-style: normal;

@@ -107,11 +107,19 @@
                 <label class="d-text">Cтатус согласования:<div class="master-grade-text" th:text="${appointment.stAgr}"/></label>
               </div>
             </div>
-            <div th:if="${appointment.stAgr} == 'Не согласовано'" class="stflex">
+            <div class="master-education">
+              <div class="d-flex">
+                <label class="d-text">Статус исполнения:<div class="master-education-text" th:text="${appointment.stDone}"/></label>
+              </div>
+            </div>
+            <div th:if="${appointment.stAgr} == 'Не согласовано' and ${appointment.stDone} != 'Отменено пользователем'" class="stflex">
              <button  class="del" type="button" name="Согласовать"><a class="del-text" th:href="|/updateApp?id=${appointment.id}|">Согласовать</a></button>
              <button  class="del2" type="button" name="Не согласовывать"><a class="del2-text" th:href="|/updateApp2?id=${appointment.id}|">Не согласовывать</a></button>
             </div>
-            <div th:unless="${appointment.stAgr} == 'Не согласовано'">
+            <div th:if="${appointment.stDone} == 'Отменено пользователем'" class="stflex">
+              <button  class="del4" type="button" name="Освободить время"><a class="del4-text" th:href="|/masterHistory|">Освободить время</a></button>
+            </div>
+            <div th:if="${appointment.stAgr} != 'Не согласовано' and ${appointment.stDone} != 'Отменено пользователем'">
               <button  class="del3" type="button" name="услуга оказана"><a class="del3-text" th:href="|/updateApp3?id=${appointment.id}|">Услуга оказана</a></button>
             </div>
           </div>

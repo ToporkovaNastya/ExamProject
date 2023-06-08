@@ -101,13 +101,13 @@ public class UserController
             }else
             {
                 model.addAttribute("error2","deny");
-                return new ModelAndView("redirect:/errors",model);
+                return new ModelAndView("redirect:/accessError",model);
             }
         }
         else
         {
             model.addAttribute("error2","notLog");
-            return new ModelAndView("redirect:/errors",model);
+            return new ModelAndView("redirect:/accessError",model);
         }
     }
     @GetMapping("/signOutUs")
@@ -178,6 +178,7 @@ public class UserController
         {
             model.addAttribute("loginIn","false");
         }
+
         //model.addAttribute("hours",allHours);
         //java.sql.Date sqlDate1 =new java.sql.Date(2023-1900,05-01,01);
         if(id_master!=null&&id_service!=null)
@@ -185,6 +186,7 @@ public class UserController
             int master_id = Integer.parseInt(id_master);
             int service_id = Integer.parseInt(id_service);
             var allHours = time.getHours(master_id,data,service_id);
+            model.addAttribute("data",data);
             if(allHours.size()==0)
             {
                 model.addAttribute("workIn","false");
@@ -264,7 +266,9 @@ public class UserController
     {
         var us = user.getLoginUser();
         model.addAttribute("user",us);
-        ap.deleteAppointment(id);
+        var app = ap.getAppUser(id);
+        ap.updateStDone3(id);
+        ap.updateStDone3User(app.getId_time(),app.getDate(),app.getId_master(),app.getId_service());
         if(user.signIn())
         {
             model.addAttribute("loginIn","true");

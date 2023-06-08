@@ -16,13 +16,14 @@ public class AppointmentUI2
     private String masterName;
     private String masterPatronymic;
     private int price;
+    private String stDone;
 
     public AppointmentUI2() {
     }
 
     public AppointmentUI2(int id, Date date, String timeValue, String program, int hallNumber,
                           String level, String stAgr, String serviceName, String masterSurname,
-                          String masterName, String masterPatronymic, int price) {
+                          String masterName, String masterPatronymic, int price,String stDone) {
         this.id = id;
         this.date = date;
         this.timeValue = timeValue;
@@ -35,6 +36,7 @@ public class AppointmentUI2
         this.masterName = masterName;
         this.masterPatronymic = masterPatronymic;
         this.price = price;
+        this.stDone = stDone;
     }
 
     public int getId() {
@@ -133,5 +135,13 @@ public class AppointmentUI2
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getStDone() {
+        return stDone;
+    }
+
+    public void setStDone(String stDone) {
+        this.stDone = stDone;
     }
 }

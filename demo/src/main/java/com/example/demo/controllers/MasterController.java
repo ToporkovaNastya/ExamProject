@@ -1,10 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.*;
-import com.example.demo.services.AppointmentService;
-import com.example.demo.services.MasterService;
-import com.example.demo.services.MasterTimeService;
-import com.example.demo.services.MessageService;
+import com.example.demo.services.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,27 +29,38 @@ public class MasterController
     AppointmentService ap;
     @Autowired
     MessageService mess;
+    @Autowired
+    UserService user;
 
     @GetMapping("/master")
     public ModelAndView master(ModelMap model, @ModelAttribute MasterTime mas, String error)
     {
-        var ms = master.getLoginMaster();
-        model.addAttribute("master",ms);
-        int id = ms.getId();
-        var ser= master.getServices(id);
-        model.addAttribute("services",ser);
-        model.addAttribute("masterTime",mas);
-        var value = error!=null && error.equals("NotTime") ?"Такое время уже занято":"";
-        System.out.println(value);
-        if(value!=null)  model.addAttribute("error",value);
-        if(master.signIn())
+        if(user.signIn())
         {
-            model.addAttribute("loginIn","true");
+            model.addAttribute("error2", "");
+            if(user.signInRole()==3)
+            {
+                var ms = master.getLoginMaster();
+                model.addAttribute("master",ms);
+                int id = ms.getId();
+                var ser= master.getServices(id);
+                model.addAttribute("services",ser);
+                model.addAttribute("masterTime",mas);
+                var value = error!=null && error.equals("NotTime") ?"Такое время уже занято":"";
+                if(value!=null)  model.addAttribute("error",value);
+                model.addAttribute("loginIn","true");
+                return new ModelAndView("masterPages/master",model);
+            }else
+            {
+                model.addAttribute("loginIn", "false");
+                model.addAttribute("error2","deny");
+                return new ModelAndView("redirect:/accessError",model);
+            }
         }else
         {
-            model.addAttribute("loginIn","false");
+            model.addAttribute("error2","notLog");
+            return new ModelAndView("redirect:/accessError",model);
         }
-        return new ModelAndView("masterPages/master",model);
     }
     @PostMapping("/masterTime")
     public String addTime(Model model,@ModelAttribute MasterTime mt) throws SQLException
@@ -144,6 +152,7 @@ public class MasterController
             apUi.setTimeValue(t.getValue());
             apUi.setHallNumber(a.getHallNumber());
             apUi.setStAgr(a.getStAgr());
+            apUi.setStDone(a.getStDone());
             lst.add(apUi);
         }
 
